@@ -71,8 +71,12 @@ git clone https://github.com/NonthawatKRT/NOS_Webapplication.git
    - Log in to phpMyAdmin using your MySQL credentials (default username: `root`, password: the one you set during AppServ installation).
    - Create a new database.
    - Import the SQL file (if provided) located in your cloned project folder to set up the necessary tables. (File name is `nos_db.sql`)
+   
+### Step 5: Config `db_connection.php` file
 
-### Step 5: Run the Project
+The folder you downloaded contains the `db_connection.php` file. You need to change the username (default: `root`) and password to the password you used. After that, save the file. (Make sure you change the file in the AppServ directory, not in the GitHub clone).
+
+### Step 6: Run the Project
 
 1. **Open a Web Browser**:  
    In your browser (Google Chrome, Firefox, etc.), type the following URL:
