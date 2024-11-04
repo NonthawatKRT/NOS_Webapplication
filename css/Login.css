@@ -1,0 +1,94 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px 10px 10px 10px; 
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px; /* Adds equal padding on all sides */
+    margin: 10px 0;
+    box-sizing: border-box; /* Ensures padding doesn't affect the total width */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.alert {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 5px 5px 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+/* Style for the additional options */
+.options {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+}
+
+.options a {
+    display: block;
+    margin: 5px 0;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.options a:hover {
+    text-decoration: underline;
+}
+
+.register_link {
+    text-align: start;
+}
+.spacer {
+    flex:1;
+}
+
+.forgot_link {
+    text-align: end;
+}
+
+
+

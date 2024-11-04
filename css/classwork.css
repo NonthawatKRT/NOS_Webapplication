@@ -1,0 +1,43 @@
+.mycontainer{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #f1f1f1;
+
+}
+.mycontainer div{
+    padding: 10px;
+    width: 100%;
+    float: left;
+}
+.mycontainer div h2{
+    font-size: 24px;
+    color: #000;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.mycontainer2{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #f1f1f1;
+}
+
+.mycontainer2 div{
+    padding: 10px;
+    flex: 1;
+    float: left;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}

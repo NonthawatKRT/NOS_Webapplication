@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <div class="nav-container">
+        <div class="left">
+            <a href="index.php" class="logo" style="padding:10px;">NOS Insurance</a>
+            <ul class="nav-links">
+                <li><a href="index.php">HOME</a></li>
+                <li><a href="">CONTENT</a></li>
+                <li><a href="">PACKAGES</a></li>
+                <P style="margin-left: 20px; margin-top: 0px; margin-bottom: 0px;"> | </P>
+                <li><a href="">ABOUT US</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a>
+            <a href="" class="contact"><img src="https://media-public.canva.com/pz2bs/MAETCKpz2bs/1/t.png" alt="" class="searchlogo"></a>
+
+                <li class="loginbtcontainer"><a href="login.php" class="loginbt">Login/Sign in</a></li>
+
+        </div>
+    </div>
+</nav>
+
+    <div class="register-section">
+        <h2>Register</h2>
+        <form action="register.php" method="post">
+            <div class="form-grid">
+                <div>
+                    <label for="prefix">คำนำหน้า</label>
+                    <select id="prefix" name="prefix" required>
+                        <option value="" disabled selected>เลือกคำนำหน้า</option> <!-- Placeholder option -->
+                        <option value="Mr">นาย</option>
+                        <option value="Ms">นาง</option>
+                        <option value="Mrs">นางสาว</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="firstname">ชื่อ</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+
+                <div>
+                    <label for="lastname">นามสกุล</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+
+                <div>
+                    <label for="sex">เพศ</label>
+                    <select id="sex" name="sex" required>
+                        <option value="" disabled selected>เลือกเพศ</option> <!-- Placeholder option -->
+                        <option value="Male">ชาย</option>
+                        <option value="Female">หญิง</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="dateofbirth">วันเกิด</label>
+                    <input type="date" id="dateofbirth" name="dateofbirth" required>
+                </div>
+
+                <div>
+                    <label for="nationID">เลขบัตรประชาชน</label>
+                    <input type="text" id="nationID" name="nationID" required placeholder="ระบุเลขบัตรประชาชน">
+                </div>
+
+                <div>
+                    <label for="email">อีเมล์</label>
+                    <input type="email" id="email" name="email" required placeholder="example@gamil.com">
+                </div>
+
+                <div>
+                    <label for="tel">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="tel" name="tel" required>
+                </div>
+
+                <div class="full-width">
+                    <label for="address">ที่อยู่</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="full-width">
+                    <label for="password">รหัสผ่าน</label>
+                    <input type="password" id="password" name="password" required placeholder="ระบุรหัสผ่าน">
+                </div>
+
+                <div class="full-width">
+                    <label for="confirmPassword">ยืนยันรหัสผ่าน</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="ยืนยันรหัสผ่าน">
+                </div>
+
+                <div class="full-width">
+                    <p>หมายเหคุ:</p>
+                    <ul>
+                    <li>รหัสผ่านต้องประกอบด้วยอักษรอย่างน้อย 8 ตัวอักษร</li>
+                    <li>ต้องมีอักษรตัวพิมพ์เล็ก (a-z) ตัวพิมพ์ใหญ่ (A-Z) ตัวเลข (0-9) และอักขระพิเศษ</li>
+                    <li>อักขระพิเศษประกอบด้วย (!,@,#,$,%,&,*,-,^)</li>
+                    </ul>
+                </div>
+
+                <div class="full-width">
+                    <input type="submit" value="Register">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Life Insurance Company. All rights reserved.</p>
+    </div>
+
+<script>
+    const form = document.querySelector('form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const citizenID = document.getElementById('nationID');
+
+
+    form.addEventListener('submit', function(event) {
+        // Password validation
+        const passwordValue = password.value;
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*^-]).{8,}$/;
+
+        if (!passwordPattern.test(passwordValue)) {
+            alert('Password does not meet the requirements.');
+            event.preventDefault();
+        }
+
+        // Confirm password match
+        if (passwordValue !== confirmPassword.value) {
+            alert('Passwords do not match.');
+            event.preventDefault();
+        }
+
+        // Citizen ID validation
+        if (citizenID.value.length !== 13 || isNaN(citizenID.value)) {
+            alert('Citizen ID must be exactly 13 digits.');
+            event.preventDefault();
+            return; // Stop form submission if citizen ID is invalid
+        }
+
+        // Phone number validation (assuming it's 10 digits)
+        if (tel.value.length !== 10 || isNaN(tel.value)) {
+            alert('Phone number must be exactly 10 digits.');
+            event.preventDefault();
+            return;
+        }
+
+        // Email validation using a regular expression
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value)) {
+            alert('Please enter a valid email address.');
+            event.preventDefault();
+            return;
+        }
+
+        const namePatternThai = /^[ก-๙]+$/; // Only Thai characters allowed
+        if (!namePatternThai.test(firstname.value) || !namePatternThai.test(lastname.value)) {
+            alert('Names can only contain Thai characters.');
+            event.preventDefault();
+            return;
+        }
+
+    });
+</script>
+
+</body>
+</html>

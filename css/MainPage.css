@@ -1,0 +1,297 @@
+/* MainPage.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    border-radius: 0px 0px 0px 50px;
+    position: fixed; 
+    top: 0;
+    right: 0;
+    left: 125px;
+    background-color: #333;
+    color: #fff;
+    /* padding: 10px 0; */
+    z-index: 1000; /* Ensure nav stays on top of other content */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Ensure elements are spread out */
+    align-items: center;
+    width: 100%;
+    padding: 5px 30px; /* Adjust padding as needed */
+}
+
+.left {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    flex: 1;
+    justify-content: end; /* Center align the right section */
+    align-items: center;
+    margin-right: 40px;
+}
+
+.languagebt, .loginbtcontainer {
+    margin-left: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: auto;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: start;
+    flex: 2; /* Adjust flex as needed */
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+.nav-links li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.loginbt, .languagebt {
+    background-color: #d9a300;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-left: 10px; /* Adjust margin between buttons */
+}
+
+.loginbtcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensure login button is centered */
+}
+
+.loginbt {
+    flex: 1;
+    background-color: #d9a300;
+    color: #ffffff;
+    border: none;
+    margin: 16px 0px 16px 0px;
+    padding: 10px 20px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    padding: 20px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.ads-container {
+    display: flex;
+    gap: 20px;
+}
+
+.ad {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+}
+
+.ad img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure footer stays on top of other content */
+}
+.backgroundimg {
+    background-size: cover;
+    background-position: center;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+.bigcontaintcontainer {
+    position: relative;
+    background-size: cover;
+    background-position: center top; /* Move the background to the top */
+    height: 60%; /* Adjust height to crop the bottom */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.welcomebox{
+    position: absolute;
+    top: 52%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    /* color: rgb(43, 43, 43);
+    font-size: 50px; /* Adjust size as needed */
+    /* font-weight: bold; */ 
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners for the background */
+    text-align: center;
+}
+.welcometext {
+    /* position: absolute;
+    top: 25%;
+    left: 25%;
+    transform: translate(-50%, -50%); */
+    color: rgb(255, 255, 255);
+    font-size: 50px; /* Adjust size as needed */
+    font-weight: bold;
+    line-height: 65px;
+    /* padding: 10px; */
+    border-radius: 10px; /* Rounded corners for the background */
+    text-align: center;
+}
+.bigcontentbt{
+    /* position: absolute;
+    top: 38%;
+    left: 25%; */
+    /* transform: translate(-50%, -50%); */
+    color: black;
+    background-color: #d9a300;
+    font-size: 20px; /* Adjust size as needed */
+    padding: 10px 20px;
+    border-style: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.contactlogo{
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+}
+.searchlogo{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.footer{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+
+
+.feature{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    width: 100%;
+    height: 600px;
+}
+
+.firstbox{
+    flex: 1;
+    background-color: #ffa811;
+    border-radius: 15px;
+    margin-right: 60px;
+}
+
+.secondbox{
+    flex: 1;
+    background-color: #ffcd38;
+    margin-right: 60px;
+    border-radius: 15px;
+}
+.thirdbox{
+    flex: 1;
+    border-radius: 15px;
+    background-color: #ffa811;
+}
+
+.boximg{
+    width: 100%;
+    height: 45%;
+    border-radius: 15px 15px 0px 0px;
+}
+.boxtittle{
+    margin-top: 20px;
+    margin-left: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.info{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 25px;
+}
+
+.packagerow {
+    display: flex;
+    justify-content: center; /* Center the package cards */
+    align-items: center; /* Center vertically if needed */
+    flex-direction: row;
+    padding: 20px 0px; /* Adjust padding to create spacing around the row */
+    margin: 0 auto; /* Center the row within its container */
+    gap: 40px; /* Add consistent spacing between the package cards */
+    max-width: 900px; /* Set a maximum width to prevent stretching */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.packagecard {
+    border-radius: 15px;
+    width: 350px; /* Ensure consistent width */
+    height: 500px; /* Ensure consistent height */
+    max-width: 100%; /* Ensure it does not exceed container width */
+    box-sizing: border-box; /* Include padding and border in width and height */
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+
+.packageimg{
+    width: 100%;    
+    height: 45%;
+    border-radius: 15px 15px 0px 0px;
+}
