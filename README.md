@@ -8,7 +8,7 @@ This project is a web-based application that requires a local server environment
 Before you begin, make sure you have the following installed on your machine:
 
 - **AppServ** (or any equivalent tool that includes Apache, PHP, and MySQL)
-  - You can download AppServ from [here](http://www.appserv.org/).
+  - You can download AppServ from [here](https://www.appserv.org/th/).
 
 ## Setup Instructions
 
