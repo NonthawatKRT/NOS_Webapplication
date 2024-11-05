@@ -1,94 +1,233 @@
-/* styles.css */
 body {
     font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
     background-color: #f4f4f4;
+}
+
+.spacer {
     display: flex;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 10px;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-.login-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-container h2 {
-    margin-bottom: 20px;
-}
-
-.login-container input {
-    width: 100%;
-    padding: 10px 10px 10px 10px; 
-    margin: 10px 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px; /* Adds equal padding on all sides */
-    margin: 10px 0;
-    box-sizing: border-box; /* Ensures padding doesn't affect the total width */
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .alert {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
-    padding: 5px 5px 5px 5px;
     margin-top: 10px;
     margin-bottom: 10px;
     border: 1px solid transparent;
     border-radius: 10px;
     text-align: center;
+    width: 100%;
 }
 
-
-/* Style for the additional options */
-.options {
-    margin-top: 20px;
+.alerttext {
+    color: #721c24;
+    font-size: 16px;
+    margin: 10px;
+    align-self: center;
     text-align: center;
+    padding: 20px;
+    width: 100%;
+    background-color: #f8d7da;
+    border-radius: 10px;
+}
+
+.normalspace {
+    color: #721c24;
+    font-size: 16px;
+    margin: 10px;
+    align-self: center;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.mainloginsection {
     display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    height: 100vh;
+    margin-top: 70px;
+    background-color: #f4f4f4;
 }
 
-.options a {
-    display: block;
-    margin: 5px 0;
-    color: #007bff;
-    text-decoration: none;
+.loginsection {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #004aad;
+    align-items: center;
+}
+
+.leftsection {
+    padding: 80px 50px 0px 100px;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.welcometext {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: start;
+    margin-bottom: 30px;
+}
+
+.newmemberbt {
+    margin-top: 0px;
+    padding: 10px;
+    width: 145px;
+    background-color: #f6e000;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+}
+
+.salesloginbt {
+    margin-top: 25px;
+    padding: 10px;
+    width: 145px;
+    background-color: #f6e000;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+}
+
+.customerloginbt {
+    margin-top: 25px;
+    padding: 10px;
+    width: 145px;
+    background-color: #f6e000;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+}
+
+.rightsection {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;
+    padding: 80px 120px 0px 70px;
+}
+
+.logintittle {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 0px;
+}
+
+.formsection {
+    display: flex;
+    flex-direction: column;
+}
+
+.rightsection label {
+    color: white;
     font-size: 14px;
-}
-
-.options a:hover {
-    text-decoration: underline;
-}
-
-.register_link {
+    margin-bottom: 7px;
     text-align: start;
 }
-.spacer {
-    flex:1;
+
+.rightsection input[type="text"],
+.rightsection input[type="password"] {
+    width: 100%;
+    padding: 12px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
 }
 
-.forgot_link {
+.forgotpasswordbt {
+    color: white;
+    font-size: 16px;
     text-align: end;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
+.rightsection input[type="submit"] {
+    width: 150px;
+    padding: 12px;
+    background-color: #f6e000;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    align-self: center;
+}
 
+.backgroundimg {
+    background-size: cover;
+    background-position: center;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 0px;
+}
 
+.bigcontaintcontainer {
+    position: relative;
+    background-size: cover;
+    background-position: center top;
+    /* Move the background to the top */
+    height: 50%;
+    /* Adjust height to crop the bottom */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.welcomebox {
+    position: absolute;
+    top: 38%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 10px;
+    /* Rounded corners for the background */
+    text-align: center;
+}
+
+.bgtext {
+    color: black;
+    font-size: 35px;
+    /* Adjust size as needed */
+    font-weight: bold;
+    line-height: 45px;
+    border-radius: 10px;
+    /* Rounded corners for the background */
+    text-align: center;
+}

@@ -1,121 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Insurance Main Page</title>
+    <title>NOS Insurance</title>
     <link rel="stylesheet" href="css/MainPage.css">
+    <link rel="stylesheet" href="css/Navbar.css">
+    <link rel="stylesheet" href="css/Footer.css">
+
 </head>
 <body>
     <?php
     session_start();
     ?>
 
-    <!-- Navigation Bar -->
+    <!-- ---------------------------------------------------------- NavBar Section ---------------------------------------------------------- -->
+
     <nav>
-    <div class="nav-container">
-        <div class="left">
-            <a href="index.php" class="logo" style="padding:10px;">NOS Insurance</a>
-            <ul class="nav-links">
-                <li><a href="index.php">HOME</a></li>
-                <li><a href="">CONTENT</a></li>
-                <li><a href="">PACKAGES</a></li>
-                <P style="margin-left: 20px; margin-top: 0px; margin-bottom: 0px;"> | </P>
-                <li><a href="">ABOUT US</a></li>
-            </ul>
+        <div class="nav-container">
+            <div class="left">
+                <a href="index.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
+                <ul class="nav-links">
+                    <li><a href="index.php" id="current_page">HOME</a></li>
+                    <li><a href="">CONTENT</a></li>
+                    <li><a href="">PACKAGES</a></li>
+                    <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
+                    <li><a href="">ABOUT US</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <!-- <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a> -->
+                <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a>
+                <?php if (isset($_SESSION['username'])): ?>
+                    <li class="loginbtcontainer"><a href="logout.php"
+                            class="loginbt"><?php echo $_SESSION['username'] ?></a></li>
+                <?php else: ?>
+                    <li class="loginbtcontainer"><a href="login.php" class="loginbt">Login</a></li>
+                <?php endif; ?>
+                <!-- <a href="" class="languagebt">EN/TH</a> -->
+            </div>
         </div>
-        <div class="right">
-            <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a>
-            <a href="" class="contact"><img src="https://media-public.canva.com/pz2bs/MAETCKpz2bs/1/t.png" alt="" class="searchlogo"></a>
-            <?php if (isset($_SESSION['username'])): ?>
-                <li class="loginbtcontainer"><a href="logout.php" class="loginbt"><?php echo $_SESSION['username'] ?></a></li>
-            <?php else: ?>
-                <li class="loginbtcontainer"><a href="login.php" class="loginbt">Login/Sign in</a></li>
-            <?php endif; ?>
-            <!-- <a href="" class="languagebt">EN/TH</a> -->
-        </div>
-    </div>
-</nav>
+    </nav>
+
+    <!-- ------------------------------------------------------- Big Picture Section ---------------------------------------------------------- -->
 
     <div class="bigcontaintcontainer">
-        <img src="images/Editedpagebg2.jpg" class="backgroundimg">
+        <img src="images/background.png" class="backgroundimg">
         <div class="welcomebox">
-        <h1 class="welcometext">ประกันชีวิตที่คุณต้องการ <br> เริ่มต้นที่ 2,000 บาท**</h1>
-        <button class="bigcontentbt">รายละเอียด</button>
+            <h1 class="welcometext">ประกันชีวิตที่คุณต้องการ <br> เริ่มต้นที่ x,xxx บาท</h1>
+            <button class="bigcontentbt">รายละเอียด</button>
         </div>
-        
-    </div>
-    
 
-    <!-- Main Content -->
+        <div class="scorlldot">
+            <div class="dot" id="pic1"></div>
+            <div class="dot" id="pic2"></div>
+            <div class="dot" id="pic3"></div>
+            <div class="dot" id="pic4"></div>
+            <div class="dot" id="pic5"></div>
+        </div>
+    </div>
+
+    <!-- ------------------------------------------------------- Main Content Section ---------------------------------------------------------- -->
+    
     <div class="main-content">
-        <section class="features">
-            <div class="feature">
-            <div class="firstbox">
-                <img src="images/mainpagebg.jpg" alt="" class="boximg">
-                <p class="boxtittle">Content</p>
-            </div>
-            <div class="secondbox">
-            <img src="images/mainpagebg2.jpg" alt="" class="boximg">
-            <p class="boxtittle">Content</p>
-            </div>
-            <div class="thirdbox">
-            <img src="images/mainpagebg3.jpg" alt="" class="boximg">
-                <p class="boxtittle">Content</p>
-            </div>
+
+        <!-- -------------------------------------------------------- Ads Section ---------------------------------------------------------- -->
+
+        <section class="ads">
+            <h1>ประกันภัยเเละประกันชีวิต NOS Insurance</h1>
+            <p>เลือกซื้อประกันภัยกับ NOS Insurance พร้อมรับสิทธิพิเศษมากมาย</p>
+            <div class="line"></div>
+        </section>
+
+        <!-- ------------------------------------------------------ Benefits Section ---------------------------------------------------------- -->
+
+        <section class="benefits">
+            <div class="benefitsbox">
+                <div class="benefitshead">
+                    <p>เป็นสมาชิกกับ NOS Insurance ดีอย่างไร ?</p>
+                </div>
+                <div class="benefitscontent">
+                    <div class="benefitsrow">
+                        <img src="images/checkmark.png" alt="">
+                        <div class="benefitsrowinfo">
+                            <p class="benefitsrowtittle">สมัครง่ายเเละฟรี</p>
+                            <p>ระบบสมัครง่ายภายใน 5 นาที ฟรีไม่มีค่าใช้ง่าย</p>
+                        </div>
+                    </div>
+
+                    <div class="benefitsrow">
+                        <img src="images/checkmark.png" alt="">
+                        <div class="benefitsrowinfo">
+                            <p class="benefitsrowtittle">ระบบใช้งานง่าย</p>
+                            <p>เเค่เข้าสู่ระบบกดเช็คเบี้ยประกันก็พร้อมปิดการขายเพิ่มโอกาสการขายได้ทุกที่</p>
+                        </div>
+                    </div>
+
+                    <div class="benefitsrow">
+                        <img src="images/checkmark.png" alt="">
+                        <div class="benefitsrowinfo">
+                            <p class="benefitsrowtittle">บริหารฐานลูกค้าง่ายๆ</p>
+                            <p>ด้วยระบบเเจ้งเตือนต่ออายุงานประกันของลูกค้าพร้อมทีมงานให้บริการดูเเลอย่างใกล้ชิด</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-            <div class="info">
-                <h2>-- Suggest Package --</h2>
+        <!-- ------------------------------------------------------ Example Package Section ---------------------------------------------------------- -->
+
+        <section class="examplepackage">
+            <div class="packageinfo">
+                <p>ตัวอย่างเเพ็คเกจ</p>
+                <hr>
             </div>
             <div class="packagerow">
                 <div class="packagecard">
-                    <img src="images/package1.png" alt="Package 1" class="packageimg">
-                    <h3>Package 1</h3>
-                    <p>Details about Package 1</p>
-                    <a href="">More info --> </a>
+                    <img src="images/Expackage1.png" alt="Package 1" class="packageimg">
+                    <div class="packagecardinfo"></div>
+                    <p class="packagetittle">รายละเอียดเเพ็คเกจ</p>
+                    <div class="packagedetail">
+                        <div class="packagedetailrow">
+                            <p>คุ้มครองอุบัติเหตุ สูงสุด</p>
+                            <p>1,000,000 บาท/ปี</p>
+                        </div>
+                        <div class="packagedetailrow">
+                            <p>ค่ารักษาพยาบาล อุบัติเหตุ</p>
+                            <p>50,000 บาท/ครั้ง</p>
+                        </div>
+                        <div class="packagedetailrow">
+                            <p>ผลประโยชน์อุบัติเหตุสาธารณะ</p>
+                            <p>1,000,000 บาท/ปี</p>
+                        </div>
+                        <div class="packagedetailrow">
+                            <p>ชดเชยรายได้(สูงสุด30วัน)</p>
+                            <p>0 บาท/วัน</p>
+                        </div>
+                        <div class="packagedetailrow">
+                            <p>ค่าปลงศพ</p>
+                            <p>50,000 บาท/ครั้ง</p>
+                        </div>
+                    </div>
+                    <div class="packagebtcontainer">
+                        <a href="" class="packagebt">สนใจ</a>
+                    </div>
                 </div>
                 <div class="packagecard">
-                    <img src="images/package2.png" alt="Package 2" class="packageimg">
-                    <h3>Package 2</h3>
-                    <p>Details about Package 1</p>
-                    <a href="">More info --> </a>
+                    <img src="images/Expackage2.png" alt="Package 2" class="packageimg">
+                    <div class="packagecardinfo">
+                        <p class="packagetittle">รายละเอียดเเพ็คเกจ</p>
+                        <div class="packagedetail">
+                            <div class="packagedetailrow">
+                                <p>คุ้มครองอุบัติเหตุ สูงสุด</p>
+                                <p>1,000,000 บาท/ปี</p>
+                            </div>
+                            <div class="packagedetailrow">
+                                <p>ค่ารักษาพยาบาล อุบัติเหตุ</p>
+                                <p>100,000 บาท/ครั้ง</p>
+                            </div>
+                            <div class="packagedetailrow">
+                                <p>ชดเชยรายได้ (สูงสุด 30วัน)</p>
+                                <p>0 บาท/วัน</p>
+                            </div>
+                            <div class="packagedetailrow">
+                                <p>ผลประโยชน์อุบัตเหตุ เพิ่มเติม</p>
+                                <p>10,000 บาท/ครั้ง</p>
+                            </div>
+                            <div class="packagedetailrow">
+                                <p>แข่งกีฬา ที่ไม่ใช่แบบมืออาชีพ</p>
+                                <p>1,000,000 บาท/ปี</p>
+                            </div>
+                        </div>
+                        <div class="packagebtcontainer">
+                            <a href="" class="packagebt">สนใจ</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="packagemoredetailbt">SEE MORE</a>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------ Content Section ---------------------------------------------------------- -->
+
+        <section class="contentsec">
+            <div class="contents" style="margin-top: 10px; padding: 10px 25px;">
+                <p style="font-size: 35px;font-weight: bold;margin-bottom: 10px;margin-left: 30px;">บทความเกี่ยวกับประกันภัย&ประกันชีวิต</p>
+                <hr>
+            </div>
+            <div class="contentsrow">
+                <div class="contentscard">
+                    <div class="transparent"></div>
+                    <img src="images/car.jpg" alt="Content 1" class="contentsimg">
+                    <p>ประกันรถยนต์</p>
+                </div>
+                <div class="contentscard">
+                <div class="transparent"></div>
+                    <img src="images/patient.png" alt="Content 2" class="contentsimg">
+                    <p>ประกันสุขภาพ</p>
+                </div>
+                <div class="contentscard">
+                <div class="transparent"></div>
+                    <img src="images/food.jpg" alt="Content 3" class="contentsimg">
+                    <p>สิทธิพิเศษอื่นๆ</p>
                 </div>
             </div>
+            <div class="contentsbtcontainer">
+                <a href="" class="contentsbt">SEE MORE</a>
+            </div>
+        </section>
 
+        <!-- -------------------------------------------------- Question Section ---------------------------------------------------------- -->
 
-        <section class="ads">
-            <h2>Insurance Packages</h2>
-            <div class="ads-container">
-                <div class="ad">
-                    <img src="images/package1.png" alt="Package 1">
-                    <h3>Package 1</h3>
-                    <p>Details about Package 1</p>
-                    <?php if (isset($_SESSION['username'])): ?>
-                        <a href="buy_package.php?package=package1">Buy Now</a>
-                    <?php else: ?>
-                        <a href="login2.php?redirect=buy_package.php?package=package1">Log in to buy this package</a>
-                    <?php endif; ?>
+        <section class="questionsec">
+            <div class="questioninfo">
+                <p>คำถามที่พบบ่อย</p>
+                <hr>
+            </div>
+            <div class="questionrow">
+                <div class="questioncard">
+                    <div class="text">ซื้อประกันสุชภาพออนไลน์ VS ซื้อกับตัวเเทน เเบบไหนคุ้มกว่า </div>
+                    <img src="images/plusicon.png" alt="" class="plusicon">
                 </div>
-                <div class="ad">
-                    <img src="images/package2.png" alt="Package 2">
-                    <h3>Package 2</h3>
-                    <p>Details about Package 2</p>
-                    <?php if (isset($_SESSION['username'])): ?>
-                        <a href="buy_package.php?package=package2">Buy Now</a>
-                    <?php else: ?>
-                        <a href="login2.php?redirect=buy_package.php?package=package2">Log in to buy this package</a>
-                    <?php endif; ?>
-                </div>
-                <!-- Add more packages as needed -->
             </div>
         </section>
     </div>
 
-    <!-- Footer -->
+    <!-- ------------------------------------------------------ Footer Section ---------------------------------------------------------- -->
+
     <div class="footer">
-        <p>&copy; 2024 Life Insurance Company. All rights reserved.</p>
+        <hr>
+        <div class="footercontainer">
+        <div class="footerrow">
+            <div class="logoandapp">
+                <div class="flogocontainer">
+                    <img src="images/logo.png" alt="Logo" class="flogo">
+                </div>
+                <div class="fappcontainer">
+                    <img src="images/xlogo-removebg-.png" alt="" class="applogo">
+                    <img src="images/instagramlogo-removebg.png" alt="" class="applogo">
+                    <img src="images/youtubelogo-removebg.png" alt="" class="applogo">
+                    <img src="images/inlogo-removebg.png" alt="" class="applogo">
+                </div>
+            </div>
+            <div class="footercontentrow">
+                <p class="fcontenttittle">User cases</p>
+                <p>UI design</p>
+                <p>UX design</p>
+                <p>Wireframing</p>
+                <p>Diagramming</p>
+                <p>Brainstorming</p>
+                <p>Online whiteboard</p>
+                <p>Team collaboration</p>
+            </div>
+            <div class="footercontentrow">
+            <p class="fcontenttittle">Explore</p>
+                <p>Design</p>
+                <p>Prototyping</p>
+                <p>Development features</p>
+                <p>Design systems</p>
+                <p>Collaboration features</p>
+                <p>Design process</p>
+                <p>FigJam</p>
+            </div>
+            <div class="footercontentrow">
+            <p class="fcontenttittle">Resources</p>
+                <p>Blog</p>
+                <p>Best practices</p>
+                <p>Colors</p>
+                <p>Color wheel</p>
+                <p>Support</p>
+                <p>Developers</p>
+                <p>Resource library</p>
+            </div>
+            <div class="upiconcontainer">
+                    <a href=""><img src="images/uparrow.png" alt="" class="upicon"></a>
+            </div>            
+        </div>
+        <div class="coppyright">
+                <p>&copy; 2024 Life Insurance Company. All rights reserved.</p>
+        </div>
+        </div>
     </div>
 </body>
 </html>

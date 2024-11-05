@@ -1,0 +1,112 @@
+nav {
+    border-radius: 0px 0px 15px 15px;
+    position: fixed; 
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #004aad;
+    color: #fff;
+    /* padding: 10px 0; */
+    z-index: 1000; /* Ensure nav stays on top of other content */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Ensure elements are spread out */
+    align-items: center;
+    width: 100%;
+    padding: 5px 30px; /* Adjust padding as needed */
+}
+
+.left {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    flex: 1;
+    justify-content: end; /* Center align the right section */
+    align-items: center;
+    margin-right: 40px;
+}
+
+
+.logo {
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 50px;
+    margin-left: 10px;
+}
+
+.NOSlogo{
+    width: 160px;
+    height: 45px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: start;
+    flex: 2; /* Adjust flex as needed */
+    list-style: none;
+    margin-left: 0px;
+}
+
+.nav-links li {
+    margin-left: 0px;
+    margin-right: 20px;
+}
+.nav-links li a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.loginbt, .languagebt {
+    background-color: #d9a300;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-left: 10px; /* Adjust margin between buttons */
+}
+
+.searchlogo{
+    width: 25px;
+    height: 25px;
+    margin-right: 30px;
+    margin-top: 3px;
+}
+
+.loginbtcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensure login button is centered */
+}
+
+.loginbt {
+    flex: 1;
+    background-color: #f6e000;
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    padding: 10px 30px;
+    border-radius: 5px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+#current_page {
+    color: #f6e000;
+}

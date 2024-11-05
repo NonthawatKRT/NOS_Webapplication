@@ -115,12 +115,11 @@
         <div class="loginsection">
             <div class="leftsection">
                 <p class="welcometext">Welcome To NOS Insuranse</p>
-                <a href="" class="newmemberbt">New Member?</a>
-                <a href="saleslogin.php" class="salesloginbt">Sales Login</a>
+                <a href="login.php" class="customerloginbt">Customer Login</a>
             </div>
             <div class="rightsection">
                 <p class="logintittle">LOG IN</p>
-                <form action="login.php" method="post" class="formsection">
+                <form action="saleslogin.php" method="post" class="formsection">
                     <label for="username">USERNAME</label>
                     <input type="text" id="username" name="username" required>
                     <label for="password">PASSWORD</label>
@@ -137,6 +136,7 @@
                 <h1 class="bgtext">"ปกป้อง<span style="color: #f6e000">ครอบครัว</span>ที่คุณรัก<br>สร้างความมั่นคงให้อนาคต"</h1>
             </div>
         </div>
+
     </section>
     
     <!-- ------------------------------------------------------ Footer Section ---------------------------------------------------------- -->
@@ -197,4 +197,5 @@
     </div>
 
 </body>
+
 </html>

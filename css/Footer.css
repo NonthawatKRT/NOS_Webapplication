@@ -1,0 +1,86 @@
+.footercontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.footer{
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.footerrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.logoandapp{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    row-gap: 10px;
+}
+.flogocontainer{
+    display: flex;
+    justify-content: center;
+}
+.fappcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+.flogo{
+    width: 200px;
+    height: 60px;
+}
+.applogo{
+    width: 25px;
+    height: 25px;
+}
+.fcontenttittle{
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.footercontentrow{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    column-gap: 20px;
+    padding: 20px;
+}
+.footercontentrow p{
+    font-size: 14px;
+    margin: 8px;
+}
+.upiconcotainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.upicon{
+    padding: 20px;
+    width: 30px;
+    height: 30px;
+    margin-left: 50px;
+}
+
+.coppyright{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding: 20px;
+}
+
+.coppyright p{
+    font-size: 14px;
+    margin-bottom: 0px;
+}
