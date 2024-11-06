@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mailer = new Swift_Mailer($transport);
 
         // Prepare the verification email
-        $verification_link = "http://localhost/lifeinsurance_project/verify_email.php?token=" . urlencode($verification_token);
+        $verification_link = "http://oatsu001.thddns.net:6760/NOS_Webapplication/verify_email.php?token=" . urlencode($verification_token);
         $subject = "Email Verification";
         $bodycontent = "
             <html>
