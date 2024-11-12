@@ -24,7 +24,7 @@
                 <ul class="nav-links">
                     <li><a href="index.php" id="current_page">HOME</a></li>
                     <li><a href="">CONTENT</a></li>
-                    <li><a href="">PACKAGES</a></li>
+                    <li><a href="package.php">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
                     <li><a href="">ABOUT US</a></li>
                 </ul>

@@ -1,0 +1,53 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ------------------------------------------------------- Main Picture Section ------------------------------------------------------- */
+
+.main-content {
+    padding: 15px 20px;
+    width: 80%;
+    margin: 20px auto;
+    margin-top: 0px;
+}
+
+.backgroundimg {
+    background-size: cover;
+    background-position: center;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 60px;
+}
+.bigcontaintcontainer {
+    position: relative;
+    background-size: cover;
+    background-position: center top; /* Move the background to the top */
+    height: 60%; /* Adjust height to crop the bottom */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pic1{
+    background-color: #f6e000;
+}
+
+.bigcontentbt{
+    font-weight: 500;
+    color: white;
+    background-color: #004aad;
+    font-size: 20px; /* Adjust size as needed */
+    padding: 12px 40px;
+    border-style: none;
+    cursor: pointer;
+}
