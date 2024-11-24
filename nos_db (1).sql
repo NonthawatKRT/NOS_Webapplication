@@ -172,7 +172,8 @@ CREATE TABLE `policy` (
   `CoverageAmount` decimal(15,2) DEFAULT NULL,
   `Premium` decimal(10,2) DEFAULT NULL,
   `TermLength` int(11) DEFAULT NULL,
-  `Description` text
+  `Description` text,
+  `imageName` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
