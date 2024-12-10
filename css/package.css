@@ -119,3 +119,59 @@ body {
     font-size: 25px;
     color: #333;
 }
+
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.search-form input,
+.search-form select {
+    padding: 8px;
+    font-size: 16px;
+}
+
+.search-form button {
+    padding: 10px 15px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    text-decoration: none; /* ลบเส้นขีดใต้จากลิงก์ */
+}
+a:hover {
+    text-decoration: none; /* ลบเส้นขีดใต้เมื่อโฮเวอร์ */
+}
+
+/* description */
+.package-card .description {
+    position: relative;
+}
+
+.package-card .full-text {
+    display: none;
+}
+
+.package-card .toggle-description {
+    background-color: transparent;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-decoration: underline;
+}
+
+.read-more{
+    color: #0056b3;
+}

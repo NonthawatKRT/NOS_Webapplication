@@ -1,0 +1,116 @@
+/* Reset และตั้งค่าพื้นฐาน */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+
+/* การตั้งค่าพื้นฐานสำหรับ package details */
+.package-details {
+    display: flex;
+    max-width: 100%;
+    /* margin-top: 50px; */
+    padding: 75px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    align-items: center; /* Align content vertically */
+    justify-content: center; /* Align the image on the left and content on the right */
+    /* height: 100vh; ให้แสดงทั้งหมดในหน้าจอเดียว */
+}
+
+/* ปุ่มย้อนกลับ */
+.back-button {
+    position: absolute;
+    margin: 20px;
+    left: 0px;
+    padding: 10px 20px; /* เพิ่มช่องว่างในปุ่ม */
+    font-size: 1rem; /* ขนาดฟอนต์ */
+    font-weight: bold; /* ทำให้ข้อความในปุ่มหนา */
+    color: #fff; /* สีตัวอักษรในปุ่มเป็นสีขาว */
+    background-color: #0056b3; /* สีพื้นหลังของปุ่ม */
+    text-decoration: none; /* ลบขีดเส้นใต้จากลิงก์ */
+    border-radius: 5px; /* ทำให้มุมปุ่มโค้งมน */
+    transition: background-color 0.3s ease; /* ทำให้การเปลี่ยนสีพื้นหลังนุ่มนวล */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ปุ่มดูเด่นขึ้น */
+}
+
+.back-button:hover {
+    background-color: #003d7a; /* เปลี่ยนสีเมื่อผู้ใช้โฮเวอร์ที่ปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ที่ปุ่ม */
+}
+
+.apply-button {
+    position: absolute;
+    margin-left: 20px;
+    padding: 10px 20px; /* เพิ่มช่องว่างในปุ่ม */
+    font-size: 1rem; /* ขนาดฟอนต์ */
+    font-weight: bold; /* ทำให้ข้อความในปุ่มหนา */
+    color: #fff; /* สีตัวอักษรในปุ่มเป็นสีขาว */
+    background-color: #0056b3; /* สีพื้นหลังของปุ่ม */
+    text-decoration: none; /* ลบขีดเส้นใต้จากลิงก์ */
+    border-radius: 5px; /* ทำให้มุมปุ่มโค้งมน */
+    transition: background-color 0.3s ease; /* ทำให้การเปลี่ยนสีพื้นหลังนุ่มนวล */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ปุ่มดูเด่นขึ้น */
+}
+
+.apply-button:hover {
+    background-color: #003d7a; /* เปลี่ยนสีเมื่อผู้ใช้โฮเวอร์ที่ปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ที่ปุ่ม */
+}
+.confirm-button {
+    position: absolute;
+    margin-left: 300px;
+    padding: 10px 20px; /* เพิ่มช่องว่างในปุ่ม */
+    font-size: 1rem; /* ขนาดฟอนต์ */
+    font-weight: bold; /* ทำให้ข้อความในปุ่มหนา */
+    color: #fff; /* สีตัวอักษรในปุ่มเป็นสีขาว */
+    background-color: #0056b3; /* สีพื้นหลังของปุ่ม */
+    text-decoration: none; /* ลบขีดเส้นใต้จากลิงก์ */
+    border-radius: 5px; /* ทำให้มุมปุ่มโค้งมน */
+    transition: background-color 0.3s ease; /* ทำให้การเปลี่ยนสีพื้นหลังนุ่มนวล */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ปุ่มดูเด่นขึ้น */
+}
+
+.confirm-button:hover {
+    background-color: #003d7a; /* เปลี่ยนสีเมื่อผู้ใช้โฮเวอร์ที่ปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ที่ปุ่ม */
+}
+
+
+/* การตั้งค่ารูปภาพ */
+.package-details img {
+    max-width: 30%; /* ให้รูปภาพใช้พื้นที่ 40% ของหน้าจอ */
+    height: auto;
+    border-radius: 8px;
+    margin-right: 40px; /* กำหนดช่องว่างระหว่างรูปภาพกับเนื้อหา */
+}
+
+/* เนื้อหาของแพ็คเกจ */
+.package-content {
+    max-width: 55%; /* ใช้พื้นที่ 55% ของหน้าจอ */
+}
+
+/* ชื่อแพ็คเกจ */
+.package-details h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+/* รายละเอียด */
+.package-details p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.package-details p strong {
+    color: #0056b3;
+}
+

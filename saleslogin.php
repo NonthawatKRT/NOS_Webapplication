@@ -27,7 +27,7 @@
         // Check for admin login
         if ($Email === 'admin' && $Password === 'adminoat') {
             $_SESSION['username'] = $Email;
-            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'admin_dashboard.php';
+            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'admin-home.php';
             header("Location: $redirect");
             exit();
         } else {

@@ -89,13 +89,13 @@ CREATE TABLE `customerpolicy` (
   `CoverageAmount` decimal(15,2) DEFAULT NULL,
   `Premium` decimal(10,2) DEFAULT NULL,
   `TermLength` int(11) DEFAULT NULL,
-  `Created_At` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `Updated_At` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `PaymentStatus` ENUM('Pending', 'Paid') DEFAULT 'Pending',
+  `EnrollmentDate` DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
---
+
 -- Table structure for table `employees`
 --
 

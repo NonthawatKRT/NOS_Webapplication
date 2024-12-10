@@ -24,7 +24,7 @@
                 <ul class="nav-links">
                     <li><a href="index.php" id="current_page">HOME</a></li>
                     <li><a href="">CONTENT</a></li>
-                    <li><a href="package.php">PACKAGES</a></li>
+                    <li><a href="CS-package.php">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
                     <li><a href="">ABOUT US</a></li>
                 </ul>
@@ -46,7 +46,7 @@
     <!-- ------------------------------------------------------- Big Picture Section ---------------------------------------------------------- -->
 
     <div class="bigcontaintcontainer">
-        <img src="assets/images/background.png" class="backgroundimg">
+        <img src="images/background.png" class="backgroundimg">
         <div class="welcomebox">
             <h1 class="welcometext">ประกันชีวิตที่คุณต้องการ <br> เริ่มต้นที่ x,xxx บาท</h1>
             <button class="bigcontentbt">รายละเอียด</button>
@@ -177,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="package.php    " class="packagemoredetailbt">SEE MORE</a>
+                <a href="CS-package.php " class="packagemoredetailbt">SEE MORE</a>
             </div>
         </section>
 
