@@ -48,3 +48,4 @@ dots.forEach((dot, i) => {
         slideInterval = setInterval(autoSlideShow, 5000); // Restart slideshow
     });
 });
+

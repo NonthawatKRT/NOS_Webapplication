@@ -73,4 +73,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Recheck elements when scrolling
     window.addEventListener("scroll", checkFadeUpElements);
+
 });
