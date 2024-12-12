@@ -73,9 +73,7 @@
         }
     }
     ?>
-
-
-
+    
 
     <!-- ---------------------------------------------------------- NavBar Section ---------------------------------------------------------- -->
 
@@ -85,6 +83,7 @@
                 <a href="admin-home.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                 <ul class="nav-links">
                     <li><a href="admin-home.php" id="current_page">HOME</a></li>
+                    <li><a href="admin_dashboard.php" id="current_page">HOME</a></li>
                     <li><a href="">CONTENT</a></li>
                     <li><a href="admin-package.php">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
@@ -93,12 +92,29 @@
             </div>
             <div class="right">
                 <!-- <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a> -->
-                <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a>
+                <!-- <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a> -->
                 <?php if (isset($_SESSION['username'])): ?>
-                    <li class="loginbtcontainer"><a href="logout.php"
-                            class="loginbt"><?php echo $_SESSION['username'] ?></a></li>
+                    <?php
+                    // Check if a profile picture exists for the logged-in user
+                    $username = $_SESSION['username'];
+                    $profilePicturePath = "userprofiles/" . $username . ".png";
+
+                    // If no profile picture, use the default image
+                    if (!file_exists($profilePicturePath)) {
+                        $profilePicturePath = "userprofiles/Default.png";
+                    }
+                    ?>
+                    <li class="profilepiccontainer">
+                        <a href="userprofile.php">
+                            <div class="profileframe">
+                                <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
+                            </div> 
+                        </a>
+                    </li>
                 <?php else: ?>
-                    <li class="loginbtcontainer"><a href="login.php" class="loginbt">Login</a></li>
+                    <li class="loginbtcontainer">
+                        <a href="login.php" class="loginbt">Login</a>
+                    </li>
                 <?php endif; ?>
                 <!-- <a href="" class="languagebt">EN/TH</a> -->
             </div>
@@ -127,6 +143,7 @@
      </div>
 
     <form id="add-package-form" method="POST" action="admin-home.php" enctype="multipart/form-data">
+    <form id="add-package-form" method="POST" action="admin_dashboard.php" enctype="multipart/form-data">
 
         <label for="PolicyName">Policy Name:</label>
         <input type="text" id="PolicyName" name="PolicyName" required>

@@ -1,3 +1,10 @@
+<!------------------------------------------------ Verifi cation Link Page -----------------------------------------------
+                                            
+                                                **** For Verification Link ****
+
+file use:
+    required: db_connection.php
+------------------------------------------------------------------------------------------------------------------------- -->
 <?php 
 // Connect to the database
 require 'db_connection.php';
@@ -97,7 +104,7 @@ if (isset($_GET['token'])) {
             if ($role_update_stmt->execute()) {
                 echo "<script>
                     alert('Email verified successfully! You can now log in.');
-                    window.location.href = 'index.php';
+                    window.location.href = 'login.php';
                   </script>";
             } else {
                 renderPage("Error", "There was an error updating your role. Please contact support.");

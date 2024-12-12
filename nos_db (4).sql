@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2024 at 08:47 AM
+-- Generation Time: Dec 12, 2024 at 12:57 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -21,19 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `nos_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `accesslog`
---
-
-CREATE TABLE `accesslog` (
-  `AccessID` int(11) NOT NULL,
-  `RoleID` int(11) NOT NULL,
-  `Permissions` enum('Read','Write','Edit','Delete') NOT NULL,
-  `UserID` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -64,17 +51,26 @@ CREATE TABLE `customer` (
   `NationID` varchar(13) DEFAULT NULL,
   `PhoneNumber` varchar(15) DEFAULT NULL,
   `Gender` varchar(10) DEFAULT NULL,
+  `Ethnicity` varchar(255) DEFAULT NULL,
+  `Nationality` varchar(255) DEFAULT NULL,
   `DoB` date DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
-  `City` varchar(100) DEFAULT NULL,
-  `Province` varchar(100) DEFAULT NULL,
+  `District` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Province` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `PostalCode` int(11) DEFAULT NULL,
-  `PolicyID` int(11) DEFAULT NULL,
+  `Occupation` varchar(255) DEFAULT NULL,
+  `Salary` int(11) DEFAULT NULL,
+  `Workplace` varchar(255) DEFAULT NULL,
+  `PolicyID` varchar(255) DEFAULT NULL,
   `JoinDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `LastLogin` timestamp NULL DEFAULT NULL,
   `Email` varchar(100) DEFAULT NULL,
   `CreatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `UpdatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `UpdatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Healthhistory` varchar(255) DEFAULT NULL,
+  `Medicalhistory` varchar(255) DEFAULT NULL,
+  `Weight` int(11) DEFAULT NULL,
+  `Height` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -130,6 +126,7 @@ CREATE TABLE `logincredentials` (
   `PasswordHash` varchar(255) DEFAULT NULL,
   `Verification_Token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `OTP` varchar(6) DEFAULT NULL,
+  `OTP_expires_at` datetime DEFAULT NULL,
   `Status` enum('Active','waiting for verify','Inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -173,19 +170,22 @@ CREATE TABLE `policy` (
   `Premium` decimal(10,2) DEFAULT NULL,
   `TermLength` int(11) DEFAULT NULL,
   `Description` text,
-  `imageName` varchar(255) DEFAULT NULL
+  `ImageName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `roles`
+-- Dumping data for table `policy`
 --
 
-CREATE TABLE `roles` (
-  `RoleID` int(11) NOT NULL,
-  `RoleName` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `policy` (`PolicyID`, `PolicyName`, `PolicyType`, `CoverageAmount`, `Premium`, `TermLength`, `Description`, `ImageName`) VALUES
+(2, 'FirstTeast', 'Life', '10000.00', '10000.00', 123, 'First Test in localhost', 'NOSlogo-removebg-preview (1).png'),
+(3, 'SecondTest', 'Health', '10000.00', '10000.00', 213456, 'This is the Second test For Upload Image', 'Screenshot 2024-10-30 213758.png'),
+(4, 'dskajf', 'Auto', '10000.00', '10000.00', 123, 'dsfsdafsafsaf', 'Screenshot 2023-08-22 231733.png'),
+(5, 'sadfsdfdsf', 'Other', '10000.00', '10000.00', 213456, 'sadfsdafdfasaf', 'Screenshot 2023-09-10 223232.png'),
+(6, 'asdfsdafs', 'Auto', '10000.00', '10000.00', 213456, 'asfsafsafa', 'Screenshot 2023-09-09 114349.png'),
+(7, 'sadfsdfdsf', 'Health', '10000.00', '10000.00', 123, 'sdfdasfsdf', 'Screenshot 2023-09-10 223525.png'),
+(8, 'fgdsgfd', 'Health', '10000.00', '10000.00', 123, 'asfdfafsf', 'Screenshot 2023-11-15 101055.png'),
+(9, 'sadasdasd', 'Auto', '10000.00', '10000.00', 213456, 'sfdsafdasfas', 'Screenshot 2023-09-18 231002.png');
 
 -- --------------------------------------------------------
 
@@ -242,14 +242,6 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `accesslog`
---
-ALTER TABLE `accesslog`
-  ADD PRIMARY KEY (`AccessID`),
-  ADD KEY `RoleID` (`RoleID`),
-  ADD KEY `accesslog_ibfk_2` (`UserID`);
-
---
 -- Indexes for table `claims`
 --
 ALTER TABLE `claims`
@@ -283,7 +275,8 @@ ALTER TABLE `employees`
 -- Indexes for table `logincredentials`
 --
 ALTER TABLE `logincredentials`
-  ADD PRIMARY KEY (`UserID`);
+  ADD PRIMARY KEY (`UserID`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- Indexes for table `manager`
@@ -304,12 +297,6 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `policy`
   ADD PRIMARY KEY (`PolicyID`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`RoleID`);
 
 --
 -- Indexes for table `sales`
@@ -345,12 +332,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `accesslog`
---
-ALTER TABLE `accesslog`
-  MODIFY `AccessID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `claims`
 --
 ALTER TABLE `claims`
@@ -360,7 +341,7 @@ ALTER TABLE `claims`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405121;
 
 --
 -- AUTO_INCREMENT for table `manager`
@@ -378,13 +359,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `policy`
 --
 ALTER TABLE `policy`
-  MODIFY `PolicyID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `RoleID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PolicyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -407,13 +382,6 @@ ALTER TABLE `salesmanager`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `accesslog`
---
-ALTER TABLE `accesslog`
-  ADD CONSTRAINT `accesslog_ibfk_1` FOREIGN KEY (`RoleID`) REFERENCES `roles` (`RoleID`),
-  ADD CONSTRAINT `accesslog_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
 
 --
 -- Constraints for table `claims`

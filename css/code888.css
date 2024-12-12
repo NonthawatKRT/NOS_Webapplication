@@ -1,0 +1,408 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #222;
+    padding:30px 20px 10px;
+    text-align: center;
+}
+header h1 {
+    font-size: 60px;
+    margin: 0 20px;
+}
+/* Default Navbar Styles */
+header nav {
+    margin-top: 30px;
+    width: 100%;
+    background: #222;
+    left: 0;
+    right: 0;
+    top: 0px; /* Normal top offset */
+    position: relative; /* Default relative position */
+    z-index: 999;
+    transition: all 0.3s ease; /* Smooth transition for style changes */
+}
+
+header nav ul {
+    margin-top: 30px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Sticky Navbar Styles */
+header nav.sticky {
+    position: fixed; /* Stick the navbar to the top */
+    margin-top: 0px;
+    top: 0; /* Reset the top offset */
+    background: #444; /* Optional: Darker background for sticky state */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    transition: background-color 0.3s ease, top 0.3s ease; /* Smooth transitions */
+}
+
+.headerlogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo {
+    width: 400px;
+    margin: 0 40px;
+}
+
+.banner {
+    background: url('https://www.shutterstock.com/image-vector/website-banner-design-online-casino-260nw-2203985155.jpg') center/cover no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-banner {
+    background: rgba(255, 0, 0, 0.8);
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 40px;
+    animation: flicker 1s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+.about{
+    margin: 50px 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about h1{
+    font-size: 30px;
+    margin-bottom: 30px;
+    align-self: center;
+    justify-self: center;
+}
+
+.about p{
+    font-size: 18px;
+    line-height: 1.5;
+}
+.about img{
+    width: 900px;
+    justify-self: center;
+    align-self: center;
+    margin: 30px 0;
+}
+
+.ads{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+}
+.ads-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.games {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 30px 0;
+}
+.games h2{
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    align-self: center;
+    justify-self: center;
+    animation: flash 1.5s infinite;
+}
+
+@keyframes flash {
+    0%, 100% { color: #fff; }
+    50% { color: #ff6600; }
+}
+
+.gamesection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.gamerow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.game-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 40px;
+}
+
+.game-card img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    margin-bottom: 10px;
+}
+
+.floating-ads {
+    position: fixed;
+    z-index: 9999;
+}
+
+/* Common styles for ads */
+.leftsideads, .rightsideads, .middlebottomads {
+    position: fixed;
+    /* background: rgba(255, 255, 255, 0.9);     */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease;
+}
+
+/* Initial Positions */
+.leftsideads {
+    top: 50%;
+    left: -300px; /* Hidden off-screen */
+    transform: translateY(-50%);
+}
+
+.rightsideads {
+    top: 50%;
+    right: -300px; /* Hidden off-screen */
+    transform: translateY(-50%);
+}
+
+.middlebottomads {
+    bottom: -200px; /* Hidden off-screen */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Active states (visible) */
+.leftsideads.active {
+    transform: translateY(-50%) translateX(300px); /* Slide in */
+}
+
+.rightsideads.active {
+    transform: translateY(-50%) translateX(-300px); /* Slide in */
+}
+
+.middlebottomads.active {
+    transform: translateX(-50%) translateY(-200px); /* Slide in */
+}
+
+/* Close button styles */
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-weight: bold;
+}
+
+
+
+button {
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.promotion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 100px;
+}
+.promotionsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.promotion h2{
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    align-self: center;
+    justify-self: center;
+    animation: flash 1.5s infinite;
+}
+
+.promotioncardcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.promotionrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.promotion-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 40px;
+}
+.promotion-card img{
+    border-radius: 20px;
+    width: 300px;
+    margin: 20px 0;
+}
+
+.adsintro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.adsintro p{
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.adsintro img{
+    width: 1000px;
+    margin-bottom: 20px;
+}
+
+
+/* ------------------------------------- Footer section ------------------------------------- */
+
+.footercontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.footer{
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.footerrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.logoandapp{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    row-gap: 10px;
+}
+.flogocontainer{
+    display: flex;
+    justify-content: center;
+}
+.fappcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+.flogo{
+    width: 200px;
+    height: 60px;
+}
+.applogo{
+    width: 25px;
+    height: 25px;
+}
+.fcontenttittle{
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.footercontentrow{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    column-gap: 20px;
+    padding: 20px;
+}
+.footercontentrow p{
+    font-size: 14px;
+    margin: 8px;
+}
+.upiconcotainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.upicon{
+    background-color: white;
+    border-radius: 50%;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.coppyright{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding: 20px;
+}
+
+.coppyright p{
+    font-size: 14px;
+    margin-bottom: 0px;
+}

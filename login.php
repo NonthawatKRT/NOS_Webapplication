@@ -126,10 +126,27 @@ file use:
                 <!-- <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a> -->
                 <!-- <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a> -->
                 <?php if (isset($_SESSION['username'])): ?>
-                    <li class="loginbtcontainer"><a href="logout.php"
-                            class="loginbt"><?php echo $_SESSION['username'] ?></a></li>
+                    <?php
+                    // Check if a profile picture exists for the logged-in user
+                    $username = $_SESSION['username'];
+                    $profilePicturePath = "userprofiles/" . $username . ".png";
+
+                    // If no profile picture, use the default image
+                    if (!file_exists($profilePicturePath)) {
+                        $profilePicturePath = "userprofiles/Default.png";
+                    }
+                    ?>
+                    <li class="profilepiccontainer">
+                        <a href="userprofile.php">
+                            <div class="profileframe">
+                                <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
+                            </div> 
+                        </a>
+                    </li>
                 <?php else: ?>
-                    <li class="loginbtcontainer"><a href="login.php" class="loginbt">Login</a></li>
+                    <li class="loginbtcontainer">
+                        <a href="login.php" class="loginbt">Login</a>
+                    </li>
                 <?php endif; ?>
                 <!-- <a href="" class="languagebt">EN/TH</a> -->
             </div>
