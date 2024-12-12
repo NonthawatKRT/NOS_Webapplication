@@ -1,0 +1,628 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Flexbox layout for spacer section */
+.spacer {
+    display: flex;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    /* Background of the spacer */
+    margin-top: 65px;
+    margin-bottom: 10px;
+    /* Slightly adjust bottom margin */
+    margin-right: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* To stack messages vertically */
+}
+
+/* General Alert Class */
+.alert {
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* Ensure it takes the full width of the parent */
+    max-width: 1600px;
+    /* Optional: You can set a max-width to prevent it from stretching too wide */
+    margin: 0 auto;
+    /* Ensure it centers within the parent */
+}
+
+
+/* Success alert (Green background) */
+.alert-success {
+    color: #155724;
+    background-color: #d7f8d8;
+    /* Green for success */
+    border-color: #218838;
+}
+
+/* Error alert (Red background) */
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    /* Red for error */
+    border-color: #f5c6cb;
+}
+
+/* Normal Space for displaying default message when no error or success */
+.normalspace {
+    color: #721c24;
+    font-size: 16px;
+    margin: 5px 20px;
+    padding-right: 50px;
+    align-self: center;
+    text-align: center;
+    padding: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: White;
+    border-radius: 10px;
+}
+
+/* Alert Text (to be applied to the message inside the alert) */
+.alerttext {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Extra space between sections if needed */
+.spacer {
+    padding: 15px;
+}
+
+
+.Tittleofpage {
+    color: #721c24;
+    font-size: 16px;
+    margin: 0px;
+    align-self: center;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    background-color: #004aad;
+}
+
+.Tittleofpage h1 {
+    color: White;
+    font-size: 40px;
+    margin: 0px;
+    align-self: center;
+    text-align: center;
+    width: 100%;
+}
+
+.mainsection {
+    display: flex;
+    flex-direction: row;
+}
+
+.selfinfosection {
+    width: 100%;
+}
+
+.sectiontittle {
+    padding: 0px 0px;
+}
+
+.sectiontittle h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.leftside {
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 50px;
+}
+
+.rightside {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 25px;
+}
+
+.imgcontainer {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #004aad;
+    position: relative; /* Position for centering children */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilepicture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#uploadForm {
+    position: absolute; /* Position the form relative to the container */
+    height: 150%; /* Full height of the container */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to align perfectly in the middle */
+    display: flex;
+    flex-direction: column; /* Stack the input and button vertically */
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Ensure it’s on top of the image */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#uploadForm input[type="file"] {
+    margin-top: 20px;
+    margin-left: 60px;
+    color: white;
+}
+
+#uploadModal {
+    margin-bottom: 10px; /* Add space between input and button */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;  
+}
+
+.uploadButton {
+    background-color: #004aad;
+    color: white;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.uploadButton:hover {
+    background-color: #00337f; /* Darker blue on hover */
+}
+
+
+.editprofilepicbt {
+    position: absolute; /* Position relative to the container */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust positioning to be exactly centered */
+    z-index: 10; /* Ensure it's on top of the image */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white; /* White text for visibility */
+    padding: 10px 15px; /* Add padding for better appearance */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    display: flex; /* Center text within the button */
+    justify-content: center;
+    align-items: center;
+    font-weight: bold; /* Make text bold */
+    font-size: 14px; /* Adjust text size */
+    text-align: center;
+}
+
+.editprofilepicbt:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Above other elements */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Adjust as needed */
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+.profiletool {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background-color: #f6e000;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.toolrow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    justify-content: start;
+    align-items: center;
+}
+
+.toolrow {
+    cursor: pointer;
+    /* Hand cursor for clickables */
+    transition: background-color 0.3s, transform 0.2s;
+    /* Smooth transitions */
+}
+
+.toolrow:hover {
+    background-color: #f0f0f0;
+    /* Light gray background on hover */
+    border-radius: 5px;
+    transform: scale(1.05);
+    /* Slight zoom effect on hover */
+}
+
+
+.toolicon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.personalform {
+    display: flex;
+    flex-direction: row;
+    row-gap: 30px;
+    column-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding: 0px 50px;
+}
+
+.Lpersonalform {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 0px 0px;
+}
+
+.Lpersonalform div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Lpersonalform div label {
+    justify-self: start;
+    width: 10%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.Lpersonalform div input {
+    justify-self: end;
+    width: 90%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.Lpersonalform div select {
+    justify-self: end;
+    width: 90%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+
+.Rpersonalform {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 0px 0px;
+}
+
+.Rpersonalform div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Rpersonalform div label {
+    justify-self: start;
+    width: 15%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.Rpersonalform div input {
+    justify-self: end;
+    width: 85%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+
+
+.etandnation {
+    flex: 1;
+}
+
+.Rpersonalform div div label {
+    justify-self: start;
+    width: 28%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.Rpersonalform div div input {
+    justify-self: end;
+    width: 60%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.districtandprovince {
+    flex: 1;
+}
+
+.personalcon {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: start;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0px 50px;
+}
+
+.personalcon div {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+.personalcon div label {
+    width: 30%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.personalcon div input {
+    justify-self: start;
+    width: 70%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.workinfosection {
+    width: 100%;
+}
+
+
+.workinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    align-items: start;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding: 0px 50px;
+}
+
+.workinfo div {
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.workinfo div label {
+    justify-self: start;
+    width: 25%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.workinfo div input {
+    justify-self: end;
+    width: 80%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.workinfo div div label {
+    justify-self: start;
+    width: 10%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.workinfo div div input {
+    justify-self: end;
+    width: 90%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.healthsection {
+    width: 100%;
+}
+
+.healthinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 0px 50px;
+}
+
+.healthinfo div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.healthinfo div label {
+    justify-self: start;
+    width: 15%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.healthinfo div input {
+    justify-self: end;
+    width: 60%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.healthinfo div div label {
+    justify-self: start;
+    width: 7%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.healthinfo div div input {
+    justify-self: start;
+    width: 15%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+/* --------------------------------------------- CSS for fade-up animation ---------------------------------------------------- */
+
+                            /* ******* Require scrollfade.js and class="fade-up"  ******* */
+
+.fade-up {
+    opacity: 0;
+    /* Start with invisible content */
+    transform: translateY(50px);
+    /* Start slightly below the normal position */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    /* Smooth transition */
+}
+
+.fade-up.visible {
+    opacity: 1;
+    /* Fade in */
+    transform: translateY(0);
+    /* Move to original position */
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------ */

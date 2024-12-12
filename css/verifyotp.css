@@ -1,0 +1,212 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Section styles */
+.verify-otp-section {
+    max-width: 450px;
+    margin: 140px auto 80px;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.verify-otp-section h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #343a40;
+    text-align: center;
+}
+
+/* --------------------------------------------- Alert Eror and Success Messages----------------------------------------------- */
+
+.alert {
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
+}
+
+/* Success alert styles */
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+/* Error alert styles */
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #1c518a;
+    outline: none;
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25); 
+}
+
+/* Button styles */
+button {
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #004aad;
+}
+
+button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.passwordrequirement {
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.passwordrequirement p{
+    font-size: 14px;
+    line-height: 15px;
+}
+
+/* --------------------------------------------- CSS for fade-up animation ---------------------------------------------------- */
+
+                              /* ******* Require scrollfade.js and class="fade-up"  ******* */
+
+.fade-up {
+    opacity: 0; /* Start with invisible content */
+    transform: translateY(50px); /* Start slightly below the normal position */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+.fade-up.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------- For Success Page ----------------------------------------------------- */
+
+/* Body styling for the page */
+.contentcontainer {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the success message */
+.success-container {
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Success checkmark image styling */
+.success-container img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+/* Success message text styling */
+.success-container .alert-success {
+    font-size: 18px;
+    color: #28a745;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+/* Paragraph styling for additional messages */
+.success-container p {
+    color: #555;
+    font-size: 16px;
+}
+
+/* Button styling for redirect or action */
+.success-container .btn {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for button */
+.success-container .btn:hover {
+    background-color: #004aad;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+
+
+
+

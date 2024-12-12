@@ -1,271 +1,598 @@
 /* Centering the content using flexbox */
 body {
     font-family: Arial, sans-serif;
+    height: 100vh;
+    margin-top: 120px;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.welcometext{
+    width: 100%;
+    margin-left: 55px;
+    justify-content: start;
+}
+
+.welcometext p{
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.tittlesection{
+    padding: 0px 70px;
+}
+
+.tittlesection p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+
+.progressbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.circleprogress{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.circleprogress p{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    text-align: center;
+
+}
+
+.circleicon p {
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.checkmarkicon{
+    width: 30px;
+    height: 30px;
+}
+
+.circleicon {
+    width: 70px;
+    height: 70px;
+    margin: 0;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+    background-color: rgb(186, 186, 186); /* Default color */
+    transition: background-color 0.5s ease; /* Smooth transition */
 }
 
-nav {
-border-radius: 0px 0px 0px 50px;
-position: fixed; 
-top: 0;
-right: 0;
-left: 125px;
-background-color: #333;
-color: #fff;
-/* padding: 10px 0; */
-z-index: 1000; /* Ensure nav stays on top of other content */
+.circleicon.done {
+    background-color: #004aad; /* Completed color */
 }
 
-.nav-container {
-display: flex;
-justify-content: space-between; /* Ensure elements are spread out */
-align-items: center;
-width: 100%;
-padding: 5px 30px; /* Adjust padding as needed */
+.circleicon.active {
+    background-color: #f6e000; /* Active color */
 }
 
-.left {
-display: flex;
-flex: 1;
-justify-content: flex-start;
-align-items: center;
+.circleicon.active p {
+    color: black; /* Ensure text is readable on active background */
+}  
+
+.arrowicon img {
+    width: 125px;
+    height: 25px;
+    margin: 0 20px;
 }
 
-.right {
-display: flex;
-flex: 1;
-justify-content: end; /* Center align the right section */
-align-items: center;
-margin-right: 40px;
-}
-
-.languagebt, .loginbtcontainer {
-margin-left: 10px;
-}
-
-.logo {
-font-size: 24px;
-color: #fff;
-text-decoration: none;
-margin-right: auto;
-}
-
-.nav-links {
-display: flex;
-justify-content: start;
-flex: 2; /* Adjust flex as needed */
-list-style: none;
-}
-
-.nav-links li {
-margin-left: 20px;
-}
-.nav-links li a{
-text-decoration: none;
-color: #fff;
-}
-
-.loginbt, .languagebt {
-background-color: #d9a300;
-color: #ffffff;
-border: none;
-padding: 10px 20px;
-border-radius: 10px;
-cursor: pointer;
-font-size: 16px;
-text-decoration: none;
-margin-left: 10px; /* Adjust margin between buttons */
-}
-
-.loginbtcontainer {
-display: flex;
-align-items: center;
-justify-content: center; /* Ensure login button is centered */
-}
-
-.loginbt {
-flex: 1;
-background-color: #d9a300;
-color: #ffffff;
-border: none;
-margin: 16px 0px 16px 0px;
-padding: 10px 20px;
-border-radius: 10px; /* Updated border radius */
-cursor: pointer;
-font-size: 16px;
-text-decoration: none;
-}
-
-.nav-links a:hover {
-text-decoration: underline;
-}
-
-.contactlogo{
-width: 35px;
-height: 35px;
-margin-right: 20px;
-}
-.searchlogo{
-width: 35px;
-height: 35px;
-margin-right: 10px;
-}
-
-
-/* CSS styles for the login section */
-.login-section {
-    width: 400px; /* Increased width */
-    padding: 10px 30px 10px 30px; /* Increased padding */
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.login-section h2 {
-    margin-bottom: 25px;
-    color: #333;
-}
-
-.login-section label {
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.login-section input[type="text"],
-.login-section input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.login-section input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #985b10;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.login-section input[type="submit"]:hover {
-    background-color: #6b4710;
-}
-
-/* Flexbox for positioning forgot-password and register links */
-.login-section .link-container {
+.maincontentsection{
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 0px 280px;
+}
+
+.sectionlebel{
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.sectionlebel h2{
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
     margin-bottom: 20px;
 }
 
-.login-section a {
-    color: black;
-    text-decoration: none;
-}
-
-.login-section a:hover {
-    text-decoration: underline;
-}
-
-/* CSS styles for the registration form container */
-.register-section {
-    width: 700px;
-    padding: 20px 30px 20px 30px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.register-section h2 {
-    text-align: center;
-    margin-bottom: 25px;
+.sectionlebel p{
+    font-size: 16px;
+    font-weight: 600;
     color: #333;
-    font-size: 24px;
-    font-weight: bold;
+    margin-bottom: 0px;
 }
 
-/* Form layout using grid */
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
-    gap: 15px; /* Space between columns */
-    row-gap: 10px;
-    column-gap: 15px;
+.scrollableterm {
+    max-height: 350px; /* Set the desired height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 0px 20px; /* Optional: Add some padding */
+    border: 1px solid #606060; /* Optional: Add a border */
+    margin-bottom: 30px;
 }
-
-.form-grid label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-    text-align: left;
+.scrollableterm p{
+    font-size: 15px;
+    color: #333;
+    line-height: 22px;
 }
-
-.form-grid input,
-.form-grid select {
+.buttoncontainer{
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    margin-top: 0px;
+    margin-bottom: 30px;
 }
 
-/* Full-width inputs like password should span all columns */
-.full-width {
-    grid-column: span 3; /* Span across all three columns */
-}
-
-.register-section input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #985b10;
-    color: white;
+.confirmbt{
+    background-color: #f6e000;
+    color: black;
     border: none;
-    border-radius: 5px;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
     cursor: pointer;
     font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
+}
+.lastconfirmbt{
+    background-color: #f6e000;
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
+}
+.exitbt{
+    background-color: #f6e000;
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
 }
 
-.register-section input[type="submit"]:hover {
-    background-color: #6b4710;
+.backbt{
+    background-color: rgb(214, 214, 214);
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
 }
 
-.register-section ul {
-    text-align: left;
-    font-size: 12px;
-    color: #555;
-    list-style: decimal inside;
-    padding-left: 15px;
+.canclebt{
+    background-color: rgb(214, 214, 214);
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
 }
 
-.register-section p {
-    font-size: 12px;
-    color: #555;
-    text-align: left;
+.accountsection{
+    width: 100%;
 }
 
-.footer{
-background-color: #333;
-color: #fff;
-text-align: center;
-padding: 10px 0;
-position: fixed;
-bottom: 0;
-width: 100%;
-z-index: 1000; /* Ensure footer stays on top of other content */
+.acountform{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 0px 50px;
 }
+
+.acountform div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.acountform div label{
+    justify-self: start;
+    width: 40%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.acountform div input{
+    justify-self: end;
+    width: 60%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.usersection{
+    width: 100%;
+}
+
+.selfinfo{
+    width: 100%;
+}
+
+.personalform{
+    display: flex;
+    flex-direction: row;
+    row-gap: 30px;
+    column-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 50px;
+}
+
+.Lpersonalform{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 0px 0px;
+}
+
+.Lpersonalform div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Lpersonalform div label{
+    justify-self: start;
+    width: 10%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.Lpersonalform div input{
+    justify-self: end;
+    width: 90%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.Lpersonalform div select{
+    justify-self: end;
+    width: 90%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+
+.Rpersonalform{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 0px 0px;
+}
+
+.Rpersonalform div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Rpersonalform div label{
+    justify-self: start;
+    width: 15%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.Rpersonalform div input{
+    justify-self: end;
+    width: 85%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+
+
+.etandnation{
+    flex: 1;
+}
+
+.Rpersonalform div div label{
+    justify-self: start;
+    width:28%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.Rpersonalform div div input{
+    justify-self: end;
+    width:60%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.districtandprovince{
+    flex: 1;
+}
+
+.workinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 50px;
+}
+
+.workinfo div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.workinfo div label{
+    justify-self: start;
+    width: 25%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.workinfo div input{
+    justify-self: end;
+    width: 80%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.workinfo div div label{
+    justify-self: start;
+    width: 10%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.workinfo div div input{
+    justify-self: end;
+    width: 90%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.healthinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 0px 50px;
+}
+
+.healthinfo div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.healthinfo div label{
+    justify-self: start;
+    width: 15%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.healthinfo div input{
+    justify-self: end;
+    width: 60%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.healthinfo div div label{
+    justify-self: start;
+    width: 7%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.healthinfo div div input{
+    justify-self: start;
+    width: 15%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.confirmsection{
+    width: 100%;
+    height: 100%;
+}
+.completesection{
+    width: 100%;
+    height: 100%;
+}
+
+.confirmmarkicon{
+    width: 300px;
+    height: 300px;
+    margin: 0;
+}
+
+.mainconfirmsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px 0px;
+}
+
+.mainconfirmsection h2{
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.mainconfirmsection p{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* -------------------------------------------------- Smooth fade-in animation -------------------------------------------------- */
+
+.fade-up {
+    opacity: 0; /* Start with invisible content */
+    transform: translateY(50px); /* Start slightly below the normal position */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+.fade-up.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------ Error Message -----------------------------------------------------------------*/
+
+/* Error message container styling */
+#error-messages {
+    background-color: #fff3cd; /* Light yellow for warnings */
+    color: #856404; /* Dark text for readability */
+    border: 1px solid #ffeeba; /* Border matching the background */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    padding: 10px 20px; /* Spacing around the text */
+    margin-bottom: 15px; /* Space below the container */
+    font-size: 14px; /* Standard font size */
+    line-height: 1.5; /* Better readability */
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.3s ease-in-out; /* Smooth animation */
+}
+
+/* Smooth fade-in animation for the error messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Error message list */
+#error-messages ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove bullet points */
+}
+
+/* Individual error message items */
+#error-messages ul li {
+    margin-bottom: 5px;
+    font-weight: 500; /* Semi-bold text for emphasis */
+}
+
+
+
+
+
+
+
+
+
+

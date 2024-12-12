@@ -16,82 +16,114 @@ body {
     margin-top: 0px;
 }
 
-.backgroundimg {
-    background-size: cover;
-    background-position: center;
-    height: 50%;
-    width: 150%;
+.slideshow-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 155%; /* 5 slides = 5x container width */
+    height: 103%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    margin-top: 60px;
+    transition: transform 1s ease-in-out; /* Smooth sliding animation */
 }
+
+.slide {
+    width: 93%; /* Each slide takes the full width of the container */
+    height: 100%;
+    background-size: contain; /* Ensure the image fits within the container */
+    background-position: center; /* Center the image within the container */
+    background-repeat: no-repeat; /* Prevent tiling */
+    flex-shrink: 0; /* Prevent slides from shrinking */
+    position: relative; /* Ensure pseudo-element positions correctly */
+}
+
+.slide::before {
+    content: ""; /* Required for pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 92.5%;
+    background: rgba(0, 0, 0, 0.1); /* Semi-transparent black backdrop */
+    z-index: 1; /* Ensure it sits above the image */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+
 .bigcontaintcontainer {
     position: relative;
-    background-size: cover;
-    background-position: center top; /* Move the background to the top */
-    height: 60%; /* Adjust height to crop the bottom */
     width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide anything outside the container */
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
+
 .welcomebox{
     position: absolute;
-    top: 54%;
+    top: 50%;
     left: 20%;
     transform: translate(-50%, -50%);
-    padding: 10px;
+    padding: 20px 50px;
     border-radius: 10px; /* Rounded corners for the background */
     text-align: center;
+    z-index: 2;
 }
-.scorlldot{
+
+.scorlldot {
     position: absolute;
-    top: 97%;
+    bottom: 60px; /* Position dots at the bottom of the container */
     left: 50%;
-    transform: translate(-50%, -50%);
-    color: #004aad;
-    font-size: 50px; /* Adjust size as needed */
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 10px; /* Rounded corners for the background */
-    text-align: center;
+    transform: translateX(-50%);
     display: flex;
+    justify-content: center;
+    z-index: 2; /* Ensure dots are above the image */
 }
-.dot{
+
+.dot {
     background-color: grey;
     border-radius: 50%;
     width: 18px;
     height: 18px;
     margin: 0 4px;
+    transition: background-color 0.3s;
 }
-.dot:hover{
+
+.dot:hover {
     cursor: pointer;
+    background-color: #004aad; /* Change color on hover */
 }
-#pic1{
-    background-color: #f6e000;
+
+.dot.active {
+    background-color: #f6e000; /* Yellow for the active dot */
 }
-.welcometext{
+
+.welcometext {
     color: black;
-    font-size: 30px; /* Adjust size as needed */
+    font-size: 35px; /* Adjust size as needed */
     font-weight: 500;
-    line-height: 45px;
-    border-radius: 10px; /* Rounded corners for the background */
+    line-height: 50px;
     text-align: center;
     margin-bottom: 30px;
 }
-.bigcontentbt{
+
+.bigcontentbt {
     font-weight: 500;
     color: white;
     background-color: #004aad;
-    font-size: 20px; /* Adjust size as needed */
+    font-size: 20px;
     padding: 12px 40px;
     border-style: none;
     cursor: pointer;
+    border-radius: 5px; /* Rounded button */
 }
+
+.bigcontentbt:hover {
+    background-color: #003080; /* Slightly darker on hover */
+}
+
 
 /* ------------------------------------------------------- Ads Section ------------------------------------------------------- */
 
@@ -380,4 +412,15 @@ body {
     width: 20px;
     height: 20px;
     margin-right: 5px;
+}
+
+.fade-up {
+    opacity: 0; /* Start with invisible content */
+    transform: translateY(50px); /* Start slightly below the normal position */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+.fade-up.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
 }
