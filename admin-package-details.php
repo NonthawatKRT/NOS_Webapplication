@@ -41,31 +41,48 @@
 
     <!-- NavBar Section -->
 
-        <nav>
+    <nav>
         <div class="nav-container">
-                <div class="left">
-                    <a href="admin-home.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
-                    <ul class="nav-links">
-                        <li><a href="admin-home.php">HOME</a></li>
-                        <li><a href="">CONTENT</a></li>
-                        <li><a href="admin-package.php" id="current_page">PACKAGES</a></li>
-                        <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
-                        <li><a href="">ABOUT US</a></li>
-                    </ul>
-                </div>
-                <div class="right">
-                    <!-- <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a> -->
-                    <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a>
-                    <?php if (isset($_SESSION['username'])): ?>
-                        <li class="loginbtcontainer"><a href="logout.php"
-                                class="loginbt"><?php echo $_SESSION['username'] ?></a></li>
-                    <?php else: ?>
-                        <li class="loginbtcontainer"><a href="login.php" class="loginbt">Login</a></li>
-                    <?php endif; ?>
-                    <!-- <a href="" class="languagebt">EN/TH</a> -->
-                </div>
+            <div class="left">
+                <a href="admin-home.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
+                <ul class="nav-links">
+                    <li><a href="admin-home.php" >HOME</a></li>
+                    <li><a href="">CONTENT</a></li>
+                    <li><a href="admin-package.php" id="current_page">PACKAGES</a></li>
+                    <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
+                    <li><a href="#">ABOUT US</a></li>
+                </ul>
             </div>
-        </nav>
+            <div class="right">
+                <!-- <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a> -->
+                <!-- <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a> -->
+                <?php if (isset($_SESSION['username'])): ?>
+                    <?php
+                    // Check if a profile picture exists for the logged-in user
+                    $username = $_SESSION['username'];
+                    $profilePicturePath = "userprofiles/" . $username . ".png";
+
+                    // If no profile picture, use the default image
+                    if (!file_exists($profilePicturePath)) {
+                        $profilePicturePath = "userprofiles/Default.png";
+                    }
+                    ?>
+                    <li class="profilepiccontainer">
+                        <a href="logout.php">
+                            <div class="profileframe">
+                                <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
+                            </div> 
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li class="loginbtcontainer">
+                        <a href="login.php" class="loginbt">Login</a>
+                    </li>
+                <?php endif; ?>
+                <!-- <a href="" class="languagebt">EN/TH</a> -->
+            </div>
+        </div>
+    </nav>
 
         <!-- Big Picture Section -->
             <div class="bigcontaintcontainer">
@@ -76,7 +93,7 @@
             <a href="admin-package.php" class="back-button">Back to Packages</a>
 
             <div class="package-details">
-            <img src="uploads/<?php echo htmlspecialchars($package['imageName']); ?>" alt="Package Image">
+            <img src="uploads/<?php echo htmlspecialchars($package['ImageName']); ?>" alt="Package Image">
             <div class="package-content">
                 <h1><?php echo htmlspecialchars($package['PolicyName']); ?></h1>
                 <p><strong>Type:</strong> <?php echo htmlspecialchars($package['PolicyType']); ?></p>

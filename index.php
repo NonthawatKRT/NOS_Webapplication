@@ -222,7 +222,7 @@ file use:
                     </div>
                 </div>
                 <a href="CS-package.php " class="packagemoredetailbt">SEE MORE</a>
-                <a href="" class="packagemoredetailbt fade-up">SEE MORE</a>
+                <!-- <a href="" class="packagemoredetailbt fade-up">SEE MORE</a> -->
             </div>
         </section>
 

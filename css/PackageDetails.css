@@ -81,7 +81,6 @@ body {
     cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ที่ปุ่ม */
 }
 
-
 /* การตั้งค่ารูปภาพ */
 .package-details img {
     max-width: 30%; /* ให้รูปภาพใช้พื้นที่ 40% ของหน้าจอ */
@@ -114,3 +113,20 @@ body {
     color: #0056b3;
 }
 
+.payment-status {
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.payment-status.paid {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.payment-status.pending {
+    background-color: #f8d7da;
+    color: #721c24;
+}

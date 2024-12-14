@@ -77,17 +77,17 @@
 
     <!-- ---------------------------------------------------------- NavBar Section ---------------------------------------------------------- -->
 
+   
     <nav>
         <div class="nav-container">
             <div class="left">
                 <a href="admin-home.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                 <ul class="nav-links">
                     <li><a href="admin-home.php" id="current_page">HOME</a></li>
-                    <li><a href="admin_dashboard.php" id="current_page">HOME</a></li>
                     <li><a href="">CONTENT</a></li>
                     <li><a href="admin-package.php">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
-                    <li><a href="">ABOUT US</a></li>
+                    <li><a href="#">ABOUT US</a></li>
                 </ul>
             </div>
             <div class="right">
@@ -105,7 +105,7 @@
                     }
                     ?>
                     <li class="profilepiccontainer">
-                        <a href="userprofile.php">
+                        <a href="logout.php">
                             <div class="profileframe">
                                 <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
                             </div> 
@@ -177,11 +177,7 @@
         <button type="submit">บันทึกข้อมูล</button>
     </form>
 
-    <!-- <label for="status">สถานะ:</label>
-        <select id="status" name="status">
-            <option value="draft">ร่าง</option>
-            <option value="published">เผยแพร่</option>
-        </select> -->
+
 
 
     <!-- ------------------------------------------------------ Footer Section ---------------------------------------------------------- -->

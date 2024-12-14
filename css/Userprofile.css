@@ -604,6 +604,74 @@ body {
     font-size: 17px;
     border: 1px solid #606060;
 }
+/* --------------------------------------------- Package info ---------------------------------------------------- */
+.packagesection {
+    width: 100%;
+}
+.packageinfo {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;  /* ใช้ flex เพื่อให้รูปภาพและข้อความอยู่ข้างกัน */
+    width: 100%;
+    max-width: 1000px;  /* กำหนดความกว้างสูงสุดของการ์ด */
+    overflow: hidden;
+    text-align: left;
+}
+
+.card img {
+    width: 40%;  /* กำหนดความกว้างของรูปภาพ */
+    height: 150px;
+    object-fit: cover;
+}
+
+.card .content {
+    padding: 15px;  /* เพิ่ม padding ให้กับข้อความ */
+    flex-grow: 1;  /* ให้ข้อความขยายเต็มพื้นที่ที่เหลือ */
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.payment-status {
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.payment-status.paid {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.payment-status.pending {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+a{
+    text-decoration: none;
+}
+
 
 /* --------------------------------------------- CSS for fade-up animation ---------------------------------------------------- */
 

@@ -13,37 +13,18 @@
 
 <body>
     <?php
-    require 'db_connection.php';
     session_start();
-    $sql = "SELECT * FROM policy";
-    $result = $conn->query($sql); // รันคำสั่ง SQL
+    require 'db_connection.php';
 
-    chmod($imagePath, 0755);
-
-    $imagePath = 'uploads/' . htmlspecialchars($package['imageName']);
-
-    if (!file_exists($imagePath)) {
-        echo "<p>File not found: $imagePath</p>";
-    } else {
-        echo "<p>File found: $imagePath</p>";
-    }
-
-    if ($result->num_rows > 0) {
-        // เก็บข้อมูลใน array เพื่อแสดงผล
-        $packages = $result->fetch_all(MYSQLI_ASSOC);
-    } else {
-        $packages = []; // ไม่มีข้อมูลในตาราง
-    }
-
-    $searchType = isset($_GET['search-type']) ? trim($_GET['search-type']) : '';
-    $searchPrice = isset($_GET['search-price']) ? (int)$_GET['search-price'] : 0;
-
-    // Pagination settings
+    // Pagination and search settings
     $limit = 6;
     $page = isset($_GET['page']) ? max((int)$_GET['page'], 1) : 1;
     $offset = ($page - 1) * $limit;
 
-    // Base SQL
+    $searchType = isset($_GET['search-type']) ? trim($_GET['search-type']) : '';
+    $searchPrice = isset($_GET['search-price']) ? (int)$_GET['search-price'] : 0;
+
+    // Base SQL query with filters
     $sql = "SELECT * FROM policy WHERE 1=1";
     $params = [];
 
@@ -56,13 +37,14 @@
         $params[] = $searchPrice;
     }
 
-    // Pagination
+    // Add pagination to SQL query
     $sql .= " LIMIT ?, ?";
     $params[] = $offset;
     $params[] = $limit;
 
+    // Prepare and execute the statement
     $stmt = $conn->prepare($sql);
-    $param_types = str_repeat("s", count($params) - 2) . "ii"; // แยก string และ integer
+    $param_types = str_repeat("s", count($params) - 2) . "ii"; // Determine parameter types
     $stmt->bind_param($param_types, ...$params);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -84,6 +66,7 @@
     $total = $countResult->fetch_assoc()['total'];
     $total_pages = ceil($total / $limit);
 
+    // Helper function to create pagination links
     function createPageUrl($page)
     {
         $queryParams = $_GET;
@@ -103,23 +86,39 @@
                         <li><a href="">CONTENT</a></li>
                         <li><a href="CS-package.php" id="current_page">PACKAGES</a></li>
                         <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
-                        <li><a href="">ABOUT US</a></li>
+                        <li><a href="#">ABOUT US</a></li>
                     </ul>
                 </div>
                 <div class="right">
                     <!-- <a href="" class="contact"><img src="https://media-public.canva.com/MADpju8igYE/1/thumbnail.png" alt="" class="contactlogo"></a> -->
-                    <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a>
+                    <!-- <a href="" class="contact"><img src="images/searchicon.png" alt="" class="searchlogo"></a> -->
                     <?php if (isset($_SESSION['username'])): ?>
-                        <li class="loginbtcontainer"><a href="logout.php"
-                                class="loginbt"><?php echo $_SESSION['username'] ?></a></li>
+                        <?php
+                        // Check if a profile picture exists for the logged-in user
+                        $username = $_SESSION['username'];
+                        $profilePicturePath = "userprofiles/" . $username . ".png";
+
+                        // If no profile picture, use the default image
+                        if (!file_exists($profilePicturePath)) {
+                            $profilePicturePath = "userprofiles/Default.png";
+                        }
+                        ?>
+                        <li class="profilepiccontainer">
+                            <a href="userprofile.php">
+                                <div class="profileframe">
+                                    <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
+                                </div>
+                            </a>
+                        </li>
                     <?php else: ?>
-                        <li class="loginbtcontainer"><a href="login.php" class="loginbt">Login</a></li>
+                        <li class="loginbtcontainer">
+                            <a href="login.php" class="loginbt">Login</a>
+                        </li>
                     <?php endif; ?>
                     <!-- <a href="" class="languagebt">EN/TH</a> -->
                 </div>
             </div>
         </nav>
-
         <!- Big Picture Section ->
             <div class="bigcontaintcontainer">
                 <img src="images/packetbg.jpg" class="backgroundimg">
@@ -156,7 +155,7 @@
                         <?php foreach ($packages as $package): ?>
                             <div class="package-card">
                                 <a href="CS-package-details.php?id=<?php echo htmlspecialchars($package['PolicyID']); ?>">
-                                    <img src="uploads/<?php echo htmlspecialchars($package['imageName']); ?>" alt="Package Image">
+                                    <img src="uploads/<?php echo htmlspecialchars($package['ImageName']); ?>" alt="Package Image">
                                     <h2><?php echo htmlspecialchars($package['PolicyName']); ?></h2>
                                     <p><strong>Type:</strong> <?php echo htmlspecialchars($package['PolicyType']); ?></p>
                                     <p><strong>Coverage: </strong><?php echo htmlspecialchars($package['CoverageAmount']); ?> THB</p>
@@ -169,7 +168,8 @@
                                         $description = htmlspecialchars($package['Description']);
                                         if (strlen($description) > 150):
                                         ?>
-                                            <p><?php echo substr($description, 0, 150); ?><br><br> <strong class="read-more"> >อ่านเพิ่มเติม< </strong> </p>
+                                            <p><?php echo substr($description, 0, 150); ?><br><br> <strong class="read-more"> >อ่านเพิ่มเติม< </strong>
+                                            </p>
                                         <?php else: ?>
                                             <p><?php echo $description; ?></p>
                                         <?php endif; ?>

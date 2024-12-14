@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOS Insurance</title>
-    <link rel="stylesheet" href="css/Package.css">
     <link rel="stylesheet" href="css/Navbar.css">
     <link rel="stylesheet" href="css/PackageDetails.css">
     <link rel="stylesheet" href="css/Footer.css">
@@ -14,15 +13,15 @@
 
 <body>
     <?php
-    
+
     session_start();
     require 'db_connection.php';
 
     $sql = "SELECT * FROM users WHERE UserID = ?";
     $UserID = $_SESSION['UserID'];
-    
-     // ---------------- รับ ID จาก URL ในการเรียก package มาแสดง ----------------//
-     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+
+    // ---------------- รับ ID จาก URL ในการเรียก package มาแสดง ----------------//
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $packageId = (int) $_GET['id'];
 
         // ค้นหาข้อมูลแพ็คเกจจากฐานข้อมูล
@@ -38,15 +37,28 @@
             echo "Package not found.";
             exit;
         }
+        $sql = "SELECT * FROM customerpolicy WHERE PolicyID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $packageId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $packages = $result->fetch_assoc();
+        } else {
+            echo "Package not found.";
+            exit;
+        }
     } else {
         echo "Invalid package ID.";
         exit;
     }
+
     ?>
 
     <!-- NavBar Section -->
 
-   
+
     <nav>
         <div class="nav-container">
             <div class="left">
@@ -77,7 +89,7 @@
                         <a href="userprofile.php">
                             <div class="profileframe">
                                 <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
-                            </div> 
+                            </div>
                         </a>
                     </li>
                 <?php else: ?>
@@ -95,23 +107,25 @@
         <img src="images/packetbg.jpg" class="backgroundimg">
     </div>
 
-    <a href="CS-package.php" class="back-button">Back to Packages</a>
+    <a href="userprofile.php" class="back-button">Back to Packages</a>
 
     <!-- Main Content Section -->
     <div class="package-details">
         <img src="uploads/<?php echo htmlspecialchars($package['ImageName']); ?>" alt="Package Image">
         <div class="package-content">
             <h1><?php echo htmlspecialchars($package['PolicyName']); ?></h1>
+
+            <p class="payment-status <?php echo strtolower($packages['PaymentStatus']); ?>">
+                <?php echo $packages['PaymentStatus'] === 'Paid' ? 'Payment Completed' : 'Pending Payment'; ?>
+            </p>
+
             <p><strong>Type:</strong> <?php echo htmlspecialchars($package['PolicyType']); ?></p>
             <p><strong>Coverage:</strong> <?php echo htmlspecialchars($package['CoverageAmount']); ?> THB</p>
             <p><strong>Premium:</strong> <?php echo htmlspecialchars($package['Premium']); ?> THB</p>
             <p><strong>Term Length:</strong> <?php echo htmlspecialchars($package['TermLength']); ?> years</p>
             <p><?php echo htmlspecialchars($package['Description']); ?></p>
 
-            <!-- apply-policy -->
-            <form action="CS-apply-package.php?id=<?php echo $package['PolicyID']; ?>" method="POST">
-                <button type="submit" class="apply-button">Apply for this Package</button>
-            </form>
+           
 
             <form action="CS-payment.php?id=<?php echo $package['PolicyID']; ?>" method="POST">
                 <!-- <input type="hidden" name="PolicyID" value="<?php echo $package['PolicyID']; ?>"> -->
