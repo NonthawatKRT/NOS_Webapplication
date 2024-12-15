@@ -83,7 +83,7 @@
                     <a href="index.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                     <ul class="nav-links">
                         <li><a href="index.php">HOME</a></li>
-                        <li><a href="">CONTENT</a></li>
+                        <li><a href="content.php">CONTENT</a></li>
                         <li><a href="CS-package.php" id="current_page">PACKAGES</a></li>
                         <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
                         <li><a href="#">ABOUT US</a></li>
