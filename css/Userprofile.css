@@ -115,6 +115,14 @@ body {
     display: flex;
     flex-direction: row;
 }
+.secondmainsection{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 50px;
+}
 
 .selfinfosection {
     width: 100%;
@@ -561,7 +569,7 @@ body {
     row-gap: 30px;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     padding: 0px 50px;
 }
 
@@ -604,16 +612,32 @@ body {
     font-size: 17px;
     border: 1px solid #606060;
 }
+
+
 /* --------------------------------------------- Package info ---------------------------------------------------- */
 .packagesection {
     width: 100%;
 }
 .packageinfo {
+    justify-content: center;
+    align-items: center;
     max-width: 1200px;
     margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
+}
+
+
+.customerinfo{
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .card {
@@ -621,42 +645,86 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;  /* ใช้ flex เพื่อให้รูปภาพและข้อความอยู่ข้างกัน */
+    display: flex;
+    align-items: center;
     width: 100%;
-    max-width: 1000px;  /* กำหนดความกว้างสูงสุดของการ์ด */
+    max-width: 900px;
     overflow: hidden;
-    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
-    width: 40%;  /* กำหนดความกว้างของรูปภาพ */
-    height: 150px;
+    width: 300px;
+    height: 130px;
     object-fit: cover;
+    border-right: 1px solid #ddd;
 }
 
 .card .content {
-    padding: 15px;  /* เพิ่ม padding ให้กับข้อความ */
-    flex-grow: 1;  /* ให้ข้อความขยายเต็มพื้นที่ที่เหลือ */
+    align-items: center;
+    justify-self: center;
+    padding: 15px;
+    flex-grow: 1;
+}
+.card .content h3 {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 1.3em;
+    color: #333;
 }
 
+.card .customercontent {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.card .customercontent .customerdetails {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 70px;
+}
+
+.customerdetails h3 {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 1.3em;
+    color: #333;
+}
+
+
 .card h3 {
-    margin: 10px 0;
-    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-size: 1.3em;
     color: #333;
 }
 
 .card p {
     margin: 5px 0;
-    font-size: 0.9em;
+    font-size: 1em;
     color: #555;
 }
 
+.card p strong {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Payment Status Styling */
 .payment-status {
     font-weight: bold;
     margin: 10px 0;
     padding: 5px 10px;
     border-radius: 5px;
     display: inline-block;
+    font-size: 0.9em;
 }
 
 .payment-status.paid {
@@ -668,9 +736,51 @@ body {
     background-color: #f8d7da;
     color: #721c24;
 }
-a{
-    text-decoration: none;
+
+/* Profile Picture Container */
+.cardprofilepiccontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-left: 20px;
 }
+
+.cardprofilepiccontainer img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #39a752;
+    object-fit: cover;
+}
+
+/* Links Styling */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .cardprofilepiccontainer img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
 
 
 /* --------------------------------------------- CSS for fade-up animation ---------------------------------------------------- */

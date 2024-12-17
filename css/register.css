@@ -587,6 +587,45 @@ body {
     font-weight: 500; /* Semi-bold text for emphasis */
 }
 
+/* Full-screen overlay for the loading indicator */
+.registersection .loading-overlay {
+    position: fixed;
+    top: 0; /* Ensure the overlay covers the entire viewport */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other elements */
+    animation: fade-down 0.5s ease-in-out;
+}
+
+/* Loading box */
+.loading-overlay .loading-box {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    font-weight: bold;
+    color: black; /* Use black for the text for better readability */
+}
+
+/* Fade-down animation */
+@keyframes fade-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 
 

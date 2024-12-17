@@ -17,7 +17,7 @@ file use:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
+    <title>SaleRegister Page</title>
     <link rel="stylesheet" href="css/Navbar.css">
     <link rel="stylesheet" href="css/Footer.css">
     <link rel="stylesheet" href="css/register.css">
@@ -33,7 +33,7 @@ file use:
 
     // Connect to the database
     require 'db_connection.php';
-    require 'progressSystem.php';
+    require 'saleprogressSystem.php';
 
     // Ensure session is started correctly
     if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -103,13 +103,14 @@ file use:
             <div class="loading-box">Processing Please Wait...</div>
         </div>
 
+
         <div class="welcometext">
             <p>Welcome To NOS Insurance</p>
         </div>
 
         <section class="tittlesection">
             <div>
-                <p>สมัครใช้บริการออนไลน์</p>
+                <p>สมัครพนักงานออนไลน์</p>
                 <hr>
             </div>
         </section>
@@ -222,7 +223,7 @@ file use:
                             </p>
                         </div>
 
-                        <form class="buttoncontainer" action="register.php" method="POST">
+                        <form class="buttoncontainer" action="saleregister.php" method="POST">
                             <!-- <input type="hidden" name="action" value="next"> -->
                             <button type="submit" name="action" value="next" class="confirmbt">ยอมรับ</button>
                             <button type="submit" name="cancel" class="canclebt">ยกเลิก</button>
@@ -241,7 +242,7 @@ file use:
                         </div>
                         <div id="error-messages"></div>
                         <div class="formsection">
-                            <form action="register.php" id="registration-form" method="post">
+                            <form action="saleregister.php" id="registration-form" method="post">
                                 <div class="acountform">
                                     <div>
                                         <label for="nationid">หมายเลขบัตรประชาชน</label>
@@ -279,7 +280,7 @@ file use:
                                     </div>
                                 </div>
                                 <div class="buttoncontainer">
-                                    <form action="register.php" method="POST">
+                                    <form action="saleregister.php" method="POST">
                                         <input type="hidden" name="action" value="next">
                                         <button type="submit" id="submit-button" name="action" value="next" class="confirmbt" disabled>ต่อไป</button>
                                     </form>
@@ -289,7 +290,7 @@ file use:
                             </form>
 
                             <!-- Separate Back Button -->
-                            <form action="register.php" method="POST" class="back-form">
+                            <form action="saleregister.php" method="POST" class="back-form">
                                 <input type="hidden" name="action" value="back">
                                 <button type="submit" class="backbt">ย้อนกลับ</button>
                             </form>
@@ -300,7 +301,7 @@ file use:
 
                     <?php if ($progress == 3): ?>
                         <div class="selfinfo">
-                            <form action="register.php" method="post">
+                            <form action="saleregister.php" method="post">
                                 <div class="selfinfo">
                                     <div class="sectionlebel">
                                         <h2>กรุณากรอกข้อมูล</h2>
@@ -377,7 +378,7 @@ file use:
                                         <div>
                                             <div style="margin-right: 30px;">
                                                 <label for="occupation">อาชีพ:</label>
-                                                <input type="text" id="occupation" name="occupation" required>
+                                                <input type="text" id="occupation" name="occupation" value="Sales" disabled>
                                             </div>
 
                                             <div>
@@ -396,13 +397,13 @@ file use:
                                                     width: 85%;
                                                     padding: 6px 10px;
                                                     font-size: 17px;
-                                                    border: 1px solid #606060;" required>
+                                                    border: 1px solid #606060;" value="24000" disabled>
                                             </div>
                                         </div>
 
                                         <div>
                                             <label for="workplace">สถานที่ทำงาน:</label>
-                                            <input type="text" id="workplace" name="workplace" required>
+                                            <input type="text" id="workplace" name="workplace" value="NOS_Insurance.co" disabled>
                                             <div>
 
                                             </div>
@@ -436,7 +437,7 @@ file use:
                                     </div>
                                 </div>
                                 <div class="buttoncontainer">
-                                    <form action="register.php" method="POST">
+                                    <form action="saleregister.php" method="POST">
                                         <input type="hidden" name="action" value="next">
                                         <button type="submit" name="action" value="next" class="confirmbt">ต่อไป</button>
                                     </form>
@@ -445,7 +446,7 @@ file use:
                                 </div> -->
                             </form>
                             <!-- Separate Back Button -->
-                            <form action="register.php" method="POST" class="back-form">
+                            <form action="saleregister.php" method="POST" class="back-form">
                                 <input type="hidden" name="action" value="back">
                                 <button type="submit" class="backbt">ย้อนกลับ</button>
                             </form>
@@ -467,13 +468,13 @@ file use:
                             <!-- User-entered data will be displayed here -->
                         </div>
                         <div class="buttoncontainer">
-                            <form action="register.php" method="post">
+                            <form action="saleregister.php" method="post">
                                 <div class="buttoncontainer">
                                     <button type="submit" name="action" value="confirm" class="lastconfirmbt" id="confirm-btn">ยืนยัน</button>
                                 </div>
                             </form>
 
-                            <form action="register.php" method="POST" class="back-form">
+                            <form action="saleregister.php" method="POST" class="back-form">
                                 <input type="hidden" name="action" value="back">
                                 <button type="submit" class="backbt">แก้ไข</button>
                             </form>
@@ -484,7 +485,7 @@ file use:
                 <?php if ($progress == 5): ?>
                     <div class="completesection">
                         <div class="buttoncontainer">
-                            <form action="register.php" method="post">
+                            <form action="saleregister.php" method="post">
 
                                 <div class="mainconfirmsection fade-up">
                                     <img src="images/Confirmmark.png" alt="Checkmark" class="confirmmarkicon">
@@ -512,6 +513,8 @@ file use:
 
 
                     document.addEventListener('DOMContentLoaded', () => {
+
+
                         const form = document.getElementById('registration-form');
                         const inputs = form.querySelectorAll('input[data-requirement]');
                         const submitButton = document.getElementById('submit-button');
@@ -646,6 +649,7 @@ file use:
                             });
                         });
 
+
                         // Validate all inputs on page load
                         validateAllInputsOnLoad();
 
@@ -680,161 +684,47 @@ file use:
                 ------------------------------------------------------------------------------------------------------*/
 
                 document.addEventListener('DOMContentLoaded', () => {
+
                     const form = document.querySelector('form');
                     const inputs = document.querySelectorAll('.acountform input, .personalform input, .personalform select, .workinfo input, .healthinfo input, .usersection input');
+                    const lastConfirmBtn = document.querySelector('.lastconfirmbt');
+                    const cancelBtn = document.querySelector('.canclebt');
+                    const exitBtn = document.querySelector('.exitbt');
 
-                    // Load saved values from sessionStorage
-                    inputs.forEach(input => {
-                        const savedValue = sessionStorage.getItem(input.name);
-                        if (savedValue) {
-                            input.value = savedValue;
-                            console.log('Loaded saved ', input.name, ' : ', savedValue);
-                        }
-                    });
+                    // Utility function: Save to session storage
+                    const saveToSessionStorage = (key, value) => {
+                        sessionStorage.setItem(key, value);
+                        console.log(`Saved input ${key} : ${value}`);
+                    };
+
+                    // Utility function: Load session storage
+                    const loadFromSessionStorage = () => {
+                        inputs.forEach((input) => {
+                            const savedValue = sessionStorage.getItem(input.name);
+                            if (savedValue) {
+                                input.value = savedValue;
+                                console.log(`Loaded saved ${input.name} : ${savedValue}`);
+                            }
+                        });
+                    };
+
+                    // Utility function: Clear session storage
+                    const clearSessionStorage = () => {
+                        sessionStorage.clear();
+                        console.log('Session storage cleared.');
+                    };
 
                     // Save input values to sessionStorage on input
-                    inputs.forEach(input => {
-                        input.addEventListener('input', () => {
-                            sessionStorage.setItem(input.name, input.value);
-                            console.log('Saved input ', input.name, ' : ', input.value);
-                        });
+                    inputs.forEach((input) => {
+                        input.addEventListener('input', () => saveToSessionStorage(input.name, input.value));
                     });
 
-                    //----------------------------------------------------------------------------------------------
+                    // Pre-populate default values
+                    saveToSessionStorage('occupation', 'Sales');
+                    saveToSessionStorage('salary', '24000');
+                    saveToSessionStorage('workplace', 'NOS_Insurance.co');
 
-
-                    //------------------------------------- Prevent Change Page -------------------------------------
-
-                    let isFormSubmitted = false; // Track form submission
-
-                    // Detect if the user is navigating away from the `register.php` page
-                    function isLeavingRegisterPage(event) {
-                        const currentPage = location.pathname; // Current page URL path
-                        const nextPage = event.target.activeElement?.href || ''; // Next navigation target
-                        return nextPage && !nextPage.includes('register.php'); // Check if the next page is not `register.php`
-                    }
-
-                    // Prevent navigating away without confirmation
-                    function handleBeforeUnload(event) {
-                        if (!isFormSubmitted) {
-                            const leavingRegister = isLeavingRegisterPage(event);
-
-                            if (leavingRegister) {
-                                const confirmLeave = confirm("Are you sure you want to leave this page? Your progress will be lost.");
-
-                                if (confirmLeave) {
-                                    console.log("User confirmed leave. Clearing session storage...");
-                                    sessionStorage.clear();
-
-                                    // Attempt synchronous fetch to reset progress
-                                    const xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "progressSystem.php", false); // `false` makes it synchronous
-                                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                                    xhr.send("action=reset");
-                                    console.log("Server progress reset synchronously.");
-
-                                    resetProgressOnServer(); // Also call asynchronous function for safety
-                                } else {
-                                    console.log("User chose to stay on the page.");
-                                    sessionStorage.clear(); // Clear session storage
-
-                                    resetProgressOnServer(); // Reset progress on the server
-
-                                    event.preventDefault();
-
-                                    event.returnValue = ""; // Necessary for some browsers
-                                }
-                            }
-                        }
-                    }
-
-                    // ----------------------------------- Reset Progress on Server -------------------------------------
-
-                    //                         **** Reset Progress And Clear Session Storage ****
-
-                    // --------------------------------------------------------------------------------------------------
-
-
-                    // Send a reset request to the server
-                    async function resetProgressOnServer() {
-                        try {
-                            const response = await fetch('progressSystem.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded',
-                                },
-                                body: new URLSearchParams({
-                                    action: 'reset'
-                                }).toString(),
-                            });
-
-                            if (response.ok) {
-                                console.log("Server progress reset successfully.");
-                            } else {
-                                console.error("Failed to reset server progress.");
-                            }
-                        } catch (error) {
-                            console.error("Error during server reset:", error);
-                        }
-                    }
-
-
-                    // Attach `beforeunload` event listener
-                    window.addEventListener('beforeunload', (event) => {
-                        handleBeforeUnload(event);
-                    });
-
-                    // Handle form submission to remove the warning
-                    form.addEventListener('submit', () => {
-                        isFormSubmitted = true;
-                        window.removeEventListener('beforeunload', handleBeforeUnload);
-                    });
-
-
-                    // ---------------------------- Cancle Button to trigger resetprogress --------------------
-
-                    const cancelBtn = document.querySelector('.canclebt');
-                    if (cancelBtn) {
-                        cancelBtn.addEventListener('click', (event) => {
-                            event.preventDefault(); // Prevent default form submission
-
-                            // Clear sessionStorage
-                            sessionStorage.clear();
-
-                            // Reset session on the server and then redirect
-                            fetch('progressSystem.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/x-www-form-urlencoded',
-                                    },
-                                    body: new URLSearchParams({
-                                        action: 'reset', // Assuming the server-side script resets the session
-                                    }).toString(),
-                                })
-                                .then((response) => {
-                                    if (!response.ok) {
-                                        console.error('Failed to reset progress on the server.');
-                                    }
-                                    // Redirect to login page after resetting the session
-                                    window.location.href = 'login.php';
-                                })
-                                .catch((error) => {
-                                    console.error('Error sending reset request:', error);
-                                    // Redirect to login page even if there's an error
-                                    window.location.href = 'login.php';
-                                });
-                        });
-                    }
-
-                    // ---------------------------------------------------------------------------------------------
-
-                    //                      **** Confirm Button Trigger Submit Data ****
-
-                    //                     **** Send Data Payload To insertData.php ****                            
-
-                    //     **** Disable Submit Button And Back Button To Prevent Spamming  While Email Sending****
-
-                    // ---------------------------------------------------------------------------------------------
+                    loadFromSessionStorage(); // Load saved data from sessionStorage\
 
                     const displayLoadingIndicator = () => {
                         console.log('Displaying loading indicator...');
@@ -880,21 +770,31 @@ file use:
                     };
 
 
-                    const lastconfirmbt = document.querySelector('.lastconfirmbt');
-                    const backbt = document.querySelector('.backbt');
-                    if (lastconfirmbt) {
-                        lastconfirmbt.addEventListener('click', (event) => {
-                            displayLoadingIndicator(); // Show loading indicator
+
+
+
+                    // // Example usage
+                    // displayLoadingIndicator();
+                    // setTimeout(removeLoadingIndicator, 3000); // Automatically remove after 3 seconds
+
+
+                    // Confirm button functionality
+                    if (lastConfirmBtn) {
+                        lastConfirmBtn.addEventListener('click', (event) => {
                             console.log('Confirm button clicked');
+                            displayLoadingIndicator();
 
-                            // Disable the button to prevent spamming
-                            lastconfirmbt.disabled = true;
-                            backbt.disabled = true;
+                            // Disable buttons to prevent multiple clicks
+                            lastConfirmBtn.disabled = true;
+                            if (exitBtn) exitBtn.disabled = true;
 
-                            // Optionally show a loading indicator
-                            document.body.innerHTML += '<div class="loading-indicator">Processing...</div>';
+                            // Show a loading indicator
+                            const loadingIndicator = document.createElement('div');
+                            loadingIndicator.className = 'loading-indicator';
+                            loadingIndicator.textContent = 'Processing...';
+                            document.body.appendChild(loadingIndicator);
 
-                            // Collect data from session storage
+                            // Collect data from sessionStorage
                             const data = {
                                 nationid: sessionStorage.getItem('nationid'),
                                 dateofbirth: sessionStorage.getItem('dateofbirth'),
@@ -919,10 +819,10 @@ file use:
                                 height: sessionStorage.getItem('height'),
                             };
 
-                            console.log('Data being sent to insertData.php:', data);
+                            console.log('Data being sent to insertsaledata.php:', data);
 
-                            // Step 1: Insert data into the database
-                            fetch('insertdata.php', {
+                            // Send data to server
+                            fetch('insertsaledata.php', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json',
@@ -930,20 +830,19 @@ file use:
                                     body: JSON.stringify(data),
                                 })
                                 .then((response) => {
-                                    console.log('Response from insertdata.php:', response);
+                                    console.log('Response from insertsaledata.php:', response);
                                     if (!response.ok) {
                                         throw new Error(`Failed to insert data. HTTP status: ${response.status}`);
                                     }
                                     return response.json();
                                 })
                                 .then((result) => {
-                                    console.log('Result from insertdata.php:', result);
+                                    console.log('Result from insertsaledata.php:', result);
                                     if (result.success) {
                                         console.log('Data inserted successfully');
-                                        // alert('Data inserted successfully. Please check your email to verify your account.');
 
-                                        // Step 2: Send confirmation to progressSystem.php
-                                        return fetch('progressSystem.php', {
+                                        // Send progress confirmation
+                                        return fetch('saleprogressSystem.php', {
                                             method: 'POST',
                                             headers: {
                                                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -956,106 +855,122 @@ file use:
                                         throw new Error(result.error || 'Unknown error during data insertion');
                                     }
                                 })
-                                .then((response) => {
-                                    console.log('Response from progressSystem.php:', response);
-                                    if (!response.ok) {
-                                        throw new Error(`Failed to confirm progress. HTTP status: ${response.status}`);
+                                .then((progressResponse) => {
+                                    console.log('Response from saleprogressSystem.php:', progressResponse);
+                                    if (!progressResponse.ok) {
+                                        throw new Error(`Failed to confirm progress. HTTP status: ${progressResponse.status}`);
                                     }
-                                    return response.text(); // Optional: debug response body
+                                    return progressResponse.text();
                                 })
                                 .then((progressResult) => {
-                                    removeLoadingIndicator(); // Hide loading indicator
-                                    console.log('ProgressSystem.php response body:', progressResult);
+                                    console.log('Progress confirmation response:', progressResult);
 
-                                    // Redirect to login page after all processes are successful
-                                    window.location.href = 'register.php';
+                                    // Clear session storage and redirect
+                                    clearSessionStorage();
+                                    removeLoadingIndicator();
+                                    window.location.href = 'saleregister.php';
                                 })
                                 .catch((error) => {
-                                    console.error('Error in processing:', error); // Log the specific error
+                                    console.error('Error in processing:', error);
                                     alert('An error occurred. Please try again later.');
 
-                                    // Optionally re-enable the button if needed
-                                    lastconfirmbt.disabled = false;
-                                    backbt.disabled = false;
-                                    document.querySelector('.loading-indicator').remove();
+                                    // Re-enable buttons if error occurs
+                                    lastConfirmBtn.disabled = false;
+                                    if (exitBtn) exitBtn.disabled = false;
+                                    loadingIndicator.remove();
                                 });
                         });
                     }
 
-                    //--------------------------------- Exit Button To Reset Progress -----------------------------------
+                    // Cancel button functionality
+                    if (cancelBtn) {
+                        cancelBtn.addEventListener('click', (event) => {
+                            event.preventDefault(); // Prevent default behavior
 
-                    const ExitBtn = document.querySelector('.exitbt');
-                    if (ExitBtn) {
-                        ExitBtn.addEventListener('click', (event) => {
-                            event.preventDefault(); // Prevent default form submission
+                            // Clear session storage and reset progress
+                            clearSessionStorage();
 
-                            // Clear sessionStorage
-                            sessionStorage.clear();
-
-                            // Reset session on the server and then redirect
-                            fetch('progressSystem.php', {
+                            fetch('saleprogressSystem.php', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/x-www-form-urlencoded',
                                     },
                                     body: new URLSearchParams({
-                                        action: 'reset', // Assuming the server-side script resets the session
+                                        action: 'reset',
                                     }).toString(),
                                 })
                                 .then((response) => {
                                     if (!response.ok) {
                                         console.error('Failed to reset progress on the server.');
                                     }
-                                    // Redirect to login page after resetting the session
                                     window.location.href = 'login.php';
                                 })
                                 .catch((error) => {
                                     console.error('Error sending reset request:', error);
-                                    // Redirect to login page even if there's an error
                                     window.location.href = 'login.php';
                                 });
                         });
                     }
 
+                    // Exit button functionality
+                    if (exitBtn) {
+                        exitBtn.addEventListener('click', (event) => {
+                            event.preventDefault(); // Prevent default behavior
 
-                    //-----------------------------------------------------------------------------------------------------
+                            // Clear session storage and reset progress
+                            clearSessionStorage();
 
-                    //                     **** Show Up Data At Last Step Of Registeration ****
+                            fetch('saleprogressSystem.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                    },
+                                    body: new URLSearchParams({
+                                        action: 'reset',
+                                    }).toString(),
+                                })
+                                .then((response) => {
+                                    if (!response.ok) {
+                                        console.error('Failed to reset progress on the server.');
+                                    }
+                                    window.location.href = 'login.php';
+                                })
+                                .catch((error) => {
+                                    console.error('Error sending reset request:', error);
+                                    window.location.href = 'login.php';
+                                });
+                        });
+                    }
 
-                    //----------------------------------------------------------------------------------------------------
-
-                    // Check if we are on progress 4
+                    // Preload session data for the review step
                     if (<?php echo json_encode($progress); ?> === 4) {
-                        const reviewContainer = document.getElementById("reviewData");
-
-                        // Define the fields to display (these should match your form field names)
+                        const reviewContainer = document.getElementById('reviewData');
                         const fields = {
-                            nationid: "หมายเลขบัตรประชาชน",
-                            dateofbirth: "วัน/เดือน/ปี ค.ศ. เกิด",
-                            postcode: "รหัสไปรษณีย์",
-                            tel: "เบอร์โทรศัพท์มือถือ",
-                            email: "อีเมล์",
-                            firstname: "ชื่อ",
-                            lastname: "นามสกุล",
-                            sex: "เพศ",
-                            address: "ที่อยู่",
-                            ethnicity: "เชื้อชาติ",
-                            nationality: "สัญชาติ",
-                            district: "อำเภอ",
-                            province: "จังหวัด",
-                            occupation: "อาชีพ",
-                            salary: "เงินเดือน",
-                            workplace: "สถานที่ทำงาน",
-                            healthhistory: "ประวัติสุขภาพ",
-                            medicalhistory: "ประวัติการรักษา",
-                            weight: "น้ำหนัก",
-                            height: "ส่วนสูง"
+                            nationid: 'หมายเลขบัตรประชาชน',
+                            dateofbirth: 'วัน/เดือน/ปี ค.ศ. เกิด',
+                            postcode: 'รหัสไปรษณีย์',
+                            tel: 'เบอร์โทรศัพท์มือถือ',
+                            email: 'อีเมล์',
+                            firstname: 'ชื่อ',
+                            lastname: 'นามสกุล',
+                            sex: 'เพศ',
+                            address: 'ที่อยู่',
+                            ethnicity: 'เชื้อชาติ',
+                            nationality: 'สัญชาติ',
+                            district: 'อำเภอ',
+                            province: 'จังหวัด',
+                            occupation: 'อาชีพ',
+                            salary: 'เงินเดือน',
+                            workplace: 'สถานที่ทำงาน',
+                            healthhistory: 'ประวัติสุขภาพ',
+                            medicalhistory: 'ประวัติการรักษา',
+                            weight: 'น้ำหนัก',
+                            height: 'ส่วนสูง',
                         };
 
-                        // Create a table for displaying the data
-                        let tableHTML = "<table class='review-table'>";
+                        let tableHTML = '<table class="review-table">';
                         for (const [key, label] of Object.entries(fields)) {
-                            const value = sessionStorage.getItem(key) || "ไม่ระบุ";
+                            const value = sessionStorage.getItem(key) || 'ไม่ระบุ';
                             tableHTML += `
                 <tr>
                     <td>${label}</td>
@@ -1063,9 +978,7 @@ file use:
                 </tr>
             `;
                         }
-                        tableHTML += "</table>";
-
-                        // Insert the table into the review container
+                        tableHTML += '</table>';
                         reviewContainer.innerHTML = tableHTML;
                     }
                 });

@@ -119,7 +119,7 @@
     </head>
 
     <body>
-        <div class="container">
+        <div class="container fade-up">
             <div class="image-container">
                 <img src="images/food.jpg" alt="food">
             </div>
@@ -212,6 +212,10 @@
             </div>
         </div>
     </div>
+
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/scrollFade.js"></script>
+
 </body>
 
 </html>

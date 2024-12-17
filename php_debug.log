@@ -252,4 +252,87 @@ Input: {"nationid":"1159900123123","dateofbirth":"2024-12-01","postcode":"14110"
 Request Method: POST
 Input: {"nationid":"1159900123123","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"35","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"999999","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
 Request Method: POST
-Input: {"nationid":"1260401151341","dateofbirth":"2024-11-24","postcode":"12150","tel":"0909867436","email":"kulachatkeawmanee@gmail.com","password":"Hioat24112547!","firstname":"กุลชาติ","lastname":"แก้วมณี","sex":"male","address":"9/2 moo 7 Lam Sai","ethnicity":"ไทย","nationality":"ไทย","district":"lumlukka","province":"Pathum Thani","occupation":"student","salary":"9999","workplace":"SWU","healthhistory":"อ้วน","medicalhistory":"-","weight":"120","height":"170"}
+Input: {"dateofbirth":null,"tel":null,"email":null,"password":null,"firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":null}
+Request Method: POST
+Input: {"dateofbirth":null,"tel":null,"email":null,"password":null,"firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":null}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"nONTHAWAT4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":null}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"nONTHAWAT4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat123*","firstname":"","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat123*","firstname":"","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat123*","firstname":"","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat123*","firstname":"","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat123*","firstname":"","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat123*","firstname":"","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat123*","firstname":"","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":""}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"dateofbirth":"2024-12-01","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male"}
+Request Method: POST
+Input: {"nationid":"1159900123123","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonnon48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"350","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"10000","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900123123","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonnon48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"350","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"10000","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900123123","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonnon48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"350","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"10000","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900123128","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonny48265566@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"female","address":"350","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"10000","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900438149","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Sales","salary":"24000","workplace":"NOS_Insurance.co","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900438149","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Sales","salary":"24000","workplace":"NOS_Insurance.co","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900438149","dateofbirth":"2024-12-08","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"female","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"20000","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900438149","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Sales","salary":"24000","workplace":"NOS_Insurance.co","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900438149","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Sales","salary":"24000","workplace":"NOS_Insurance.co","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900438149","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"male","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Sales","salary":"24000","workplace":"NOS_Insurance.co","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900438149","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonthawat.ntz@gmail.com","password":"Nonthawat4826*","firstname":"Nonthawat","lastname":"Tantikunwatthana","sex":"female","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Sales","salary":"24000","workplace":"NOS_Insurance.co","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Request Method: POST
+Input: {"nationid":"1159900123127","dateofbirth":"2024-12-01","postcode":"14110","tel":"0935491111","email":"nonnon48265566@gmail.com","password":"Nonthawat4826*","firstname":"somchy","lastname":"kiddee","sex":"male","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"10000","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"50","height":"175"}
+Request Method: POST
+Input: {"nationid":"1159900123123","dateofbirth":"2024-12-08","postcode":"14110","tel":"0935491111","email":"kulachatkeawmanee@gmail.com","password":"Nonthawat4826*","firstname":"นนทวัฒน์","lastname":"ตันติกุลวัฒนา","sex":"male","address":"356 7 thailand","ethnicity":"Thai","nationality":"Thai","district":"Wisetchaichan","province":"Angthong","occupation":"Student","salary":"10000","workplace":"SWU","healthhistory":"-","medicalhistory":"-","weight":"55","height":"175"}

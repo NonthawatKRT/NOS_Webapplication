@@ -120,6 +120,12 @@ nav {
     cursor: pointer;
     font-size: 18px;
     text-decoration: none;
+    transition: transform 0.2s , box-shadow 0.2s;
+}
+
+.loginbt:hover{
+    transform: scale(1.03);
+    box-shadow: 0 6px 5px rgb(44, 44, 44 , 0.5);
 }
 
 .nav-links a:hover {
@@ -128,4 +134,15 @@ nav {
 
 #current_page {
     color: #f6e000;
+}
+
+.fade-up {
+    opacity: 0; /* Start with invisible content */
+    transform: translateY(50px); /* Start slightly below the normal position */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+.fade-up.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
 }

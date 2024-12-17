@@ -46,8 +46,8 @@
             <div class="left">
                 <a href="admin-home.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                 <ul class="nav-links">
-                    <li><a href="admin-home.php" >HOME</a></li>
-                    <li><a href="">CONTENT</a></li>
+                    <li><a href="admin_dashboard.php" >HOME</a></li>
+                    <li><a href="userdashboardforadmin.php">DASHBOARD</a></li>
                     <li><a href="admin-package.php" id="current_page">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
                     <li><a href="#">ABOUT US</a></li>
@@ -92,7 +92,7 @@
             <!-- Main Content Section -->
             <a href="admin-package.php" class="back-button">Back to Packages</a>
 
-            <div class="package-details">
+            <div class="package-details fade-up">
             <img src="uploads/<?php echo htmlspecialchars($package['ImageName']); ?>" alt="Package Image">
             <div class="package-content">
                 <h1><?php echo htmlspecialchars($package['PolicyName']); ?></h1>
@@ -161,6 +161,11 @@
                     </div>
                 </div>
             </div>
+
+            <script src="js/smoothscroll.js"></script>
+            <script src="js/scrollFade.js"></script>
+
+            
 </body>
 
 </html>

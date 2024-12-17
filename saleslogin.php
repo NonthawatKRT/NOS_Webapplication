@@ -1,15 +1,12 @@
-<!-- --------------------------------------------- Sale Login Page ----------------------------------------------------
-
-                                            ****** On Development ******
-
+<!-- ---------------------------------------------------- Login Page ----------------------------------------------------------
 file use:
     required: db_connection.php
-    required: login.php
     required: Navbar.css
     required: Footer.css
+    required: login.css
     required: smoothscroll.js
     required: scrollfade.js
------------------------------------------------------------------------------------------------------------------------- -->
+----------------------------------------------------------------------------------------------------------------------------- -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,36 +26,67 @@ file use:
 
     <?php
     require 'db_connection.php';
+    // Start the session
     session_start();
 
     $error = '';
 
     if (isset($_POST['submit'])) {
-        $Email = $_POST['username'];
+        $Email = trim($_POST['username']);
         $Password = $_POST['password'];
+        $error = ""; // Initialize error message
 
-        // Check for admin login
+        // Hardcoded admin login (not recommended)
         if ($Email === 'admin' && $Password === 'adminoat') {
             $_SESSION['username'] = $Email;
-            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'admin-home.php';
-            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'admin_dashboard.php';
             header("Location: $redirect");
             exit();
-        } else {
-            // Fetch the user data from the database
-            $stmt = $conn->prepare("SELECT PasswordHash, status FROM logincredentials WHERE email = ?");
-            $stmt->bind_param("s", $Email);
-            $stmt->execute();
-            $result = $stmt->get_result();
+        }
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $storedHash = $row['PasswordHash'];
-                $status = $row['status']; // Get the user's verification status
+        // Hardcoded cpe888 login (not recommended)
+        if ($Email === 'cpe888' && $Password === '123456789') {
+            $_SESSION['username'] = $Email;
+            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'code888.php';
+            header("Location: $redirect");
+            exit();
+        }
 
-                // Verify the entered password against the stored hash
+        // Fetch user data from the database
+        $stmt = $conn->prepare("SELECT PasswordHash, status, userID FROM logincredentials WHERE email = ?");
+        $stmt->bind_param("s", $Email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $storedHash = $row['PasswordHash'];
+            $status = $row['status'];
+            $userID = $row['userID'];
+
+            // Fetch UserRole from the users table
+            $stmt2 = $conn->prepare("SELECT UserRole FROM users WHERE userID = ?");
+            $stmt2->bind_param("s", $userID);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
+            $row2 = $result2->fetch_assoc();
+            $UserRole = $row2['UserRole'] ?? null; // Ensure a default value if UserRole is missing
+
+            if ($UserRole === 'Customer') {
                 if (password_verify($Password, $storedHash)) {
-                    // Check if the user's email is verified
+                    // Check if user is verified
+                    if ($status === 'Active') {
+                        $error = "You are a customer. Please login from the customer login page.";
+                    } else {
+                        $error = "Your email is not verified. Please check your inbox for the verification email.";
+                    }
+                } else {
+                    $error = "Incorrect username or password.";
+                }
+            } elseif ($UserRole === 'Employee') {
+                // Verify password
+                if (password_verify($Password, $storedHash)) {
+                    // Check if user is verified
                     if ($status === 'Active') {
                         $_SESSION['username'] = $Email;
                         $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
@@ -68,15 +96,19 @@ file use:
                         $error = "Your email is not verified. Please check your inbox for the verification email.";
                     }
                 } else {
-                    $error = "Wrong username/password combination";
+                    $error = "Incorrect username or password.";
                 }
             } else {
-                $error = "Wrong username/password combination";
+                $error = "Invalid user role. Please contact support.";
             }
-
-            $stmt->close();
+        } else {
+            $error = "Incorrect username or password.";
         }
+
+        $stmt->close();
     }
+
+    // Close database connection
     $conn->close();
     ?>
 
@@ -87,9 +119,9 @@ file use:
             <div class="left">
                 <a href="index.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                 <ul class="nav-links">
-                    <li><a href="index.php" id="current_page">HOME</a></li>
-                    <li><a href="">CONTENT</a></li>
-                    <li><a href="package.php">PACKAGES</a></li>
+                    <li><a href="index.php">HOME</a></li>
+                    <li><a href="content.php">CONTENT</a></li>
+                    <li><a href="CS-package.php">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
                     <li><a href="">ABOUT US</a></li>
                 </ul>
@@ -112,7 +144,7 @@ file use:
                         <a href="userprofile.php">
                             <div class="profileframe">
                                 <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
-                            </div> 
+                            </div>
                         </a>
                     </li>
                 <?php else: ?>
@@ -141,12 +173,22 @@ file use:
             <?php if ($error == "Your email is not verified. Please check your inbox for the verification email."): ?>
                 <p class="alerttext">Your email is not verified. Please check your inbox for the verification email.</p>
             <?php endif; ?>
+            <?php if ($error == "Incorrect username or password."): ?>
+                <p class="alerttext">Incorrect username or password.</p>
+            <?php endif; ?>
+            <?php if ($error == "Invalid user role. Please contact support."): ?>
+                <p class="alerttext">Invalid user role. Please contact support.</p>
+            <?php endif; ?>
+            <?php if ($error == "You are a customer. Please login from the customer login page."): ?>
+                <p class="alerttext">You are a customer. Please login from the customer login page.</p>
+            <?php endif; ?>
+
         </div>
 
         <div class="loginsection">
             <div class="leftsection fade-up">
                 <p class="welcometext">Welcome To NOS Insuranse</p>
-                <a href="login.php" class="customerloginbt">Customer Login</a>
+                <a href="login.php" class="salesloginbt">Customer Login</a>
             </div>
             <div class="rightsection">
                 <p class="logintittle">LOG IN</p>
@@ -155,7 +197,7 @@ file use:
                     <input type="text" id="username" name="username" required>
                     <label for="password">PASSWORD</label>
                     <input type="password" id="password" name="password" required>
-                    <a href="" class="forgotpasswordbt">Forget password?</a>
+                    <a href="forgetpassword.php" class="forgotpasswordbt">Forget password?</a>
                     <input type="submit" name="submit" value="Login">
                 </form>
             </div>
@@ -167,9 +209,8 @@ file use:
                 <h1 class="bgtext">"ปกป้อง<span style="color: #f6e000">ครอบครัว</span>ที่คุณรัก<br>สร้างความมั่นคงให้อนาคต"</h1>
             </div>
         </div>
-
     </section>
-    
+
     <!-- ------------------------------------------------------ Footer Section ---------------------------------------------------------- -->
 
     <div class="footer">
@@ -226,6 +267,8 @@ file use:
             </div>
         </div>
     </div>
+
+    
 
     <script src="js/smoothscroll.js"></script>
     <script src="js/scrollfade.js"></script>

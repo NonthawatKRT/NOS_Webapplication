@@ -84,7 +84,7 @@
                 <a href="admin-home.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                 <ul class="nav-links">
                     <li><a href="admin-home.php" id="current_page">HOME</a></li>
-                    <li><a href="">CONTENT</a></li>
+                    <li><a href="userdashboardforadmin.php">DASHBOARD</a></li>
                     <li><a href="admin-package.php">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
                     <li><a href="#">ABOUT US</a></li>
@@ -120,29 +120,42 @@
             </div>
         </div>
     </nav>
+
     <!-- ------------------------------------------------------- Big Picture Section ---------------------------------------------------------- -->
 
     <div class="bigcontaintcontainer">
-        <img src="images/background.png" class="backgroundimg">
-        <div class="welcomebox">
-            <h1 class="welcometext">Welcome back admin </h1>
+        <div class="slideshow-wrapper">
+            <div class="slide" style="background-image: url('images/background.png');"></div>
+            <div class="slide" style="background-image: url('images/background2.jpg');"></div>
+            <div class="slide" style="background-image: url('images/background3.jpg');"></div>
+            <div class="slide" style="background-image: url('images/background4.png');"></div>
+            <div class="slide" style="background-image: url('images/background5.jpg');"></div>
         </div>
+
+        <div class="welcomebox">
+            <h1 class="welcometext fade-up">WELCOME TO ADMIN DASHBOARD <br> ADMIN OAT</h1>
+            <!-- <button class="bigcontentbt fade-up">รายละเอียด</button> -->
+        </div>
+
         <div class="scorlldot">
-            <div class="dot" id="pic1"></div>
-            <div class="dot" id="pic2"></div>
-            <div class="dot" id="pic3"></div>
-            <div class="dot" id="pic4"></div>
-            <div class="dot" id="pic5"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </div>
 
+
     <!-- ------------------------------------------------------- Main Content Section ---------------------------------------------------------- -->
 
-    <div class="title"> 
+    <div class="fade-up">
+
+    <div class="title "> 
         <h1>Add new packages <h1> 
      </div>
 
-    <form id="add-package-form" method="POST" action="admin-home.php" enctype="multipart/form-data">
+    <!-- <form id="add-package-form" method="POST" action="admin-home.php" enctype="multipart/form-data"> -->
     <form id="add-package-form" method="POST" action="admin_dashboard.php" enctype="multipart/form-data">
 
         <label for="PolicyName">Policy Name:</label>
@@ -176,7 +189,7 @@
 
         <button type="submit">บันทึกข้อมูล</button>
     </form>
-
+    </div>
 
 
 
@@ -236,6 +249,11 @@
             </div>
         </div>
     </div>
+
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/slideshow.js"></script>
+    <script src="js/scrollFade.js"></script>
+
 </body>
 
 </html>

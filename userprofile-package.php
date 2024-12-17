@@ -20,38 +20,127 @@
     $sql = "SELECT * FROM users WHERE UserID = ?";
     $UserID = $_SESSION['UserID'];
 
+
     // ---------------- รับ ID จาก URL ในการเรียก package มาแสดง ----------------//
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $packageId = (int) $_GET['id'];
 
-        // ค้นหาข้อมูลแพ็คเกจจากฐานข้อมูล
-        $sql = "SELECT * FROM policy WHERE PolicyID = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $packageId);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        //getuserID from logincredentials
+        $username = $_SESSION['username'];
+        $getuserid = "SELECT UserID FROM logincredentials WHERE email = '$username'";
+        $result = $conn->query($getuserid);
+        $row = $result->fetch_assoc();
+        $UserID = $row['UserID'];
 
-        if ($result->num_rows > 0) {
-            $package = $result->fetch_assoc();
-        } else {
-            echo "Package not found.";
-            exit;
+        //check user role
+        $getrole = "SELECT UserRole FROM users WHERE UserID = '$UserID'";
+        $result = $conn->query($getrole);
+        $row = $result->fetch_assoc();
+        $UserRole = $row['UserRole'];
+
+        if ($UserRole == 'Customer') {
+
+            $username = $_SESSION['username'];
+            $getuserid = "SELECT CustomerID FROM customer WHERE email = '$username'";
+            $result = $conn->query($getuserid);
+            $row = $result->fetch_assoc();
+            $UserID = $row['CustomerID'];
+
+
+            $getstatus = "SELECT PaymentStatus FROM customerpolicy WHERE PolicyID = '$packageId' AND CustomerID = '$UserID'";
+            $result = $conn->query($getstatus);
+            $row = $result->fetch_assoc();
+            $PaymentStatus = $row['PaymentStatus'];
+
+            // ค้นหาข้อมูลแพ็คเกจจากฐานข้อมูล
+            $sql = "SELECT * FROM policy WHERE PolicyID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $packageId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $package = $result->fetch_assoc();
+            } else {
+                echo "Package not found.";
+                exit;
+            }
+            $sql = "SELECT * FROM customerpolicy WHERE PolicyID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $packageId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $packages = $result->fetch_assoc();
+            } else {
+                echo "Package not found.";
+                exit;
+            }
         }
-        $sql = "SELECT * FROM customerpolicy WHERE PolicyID = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $packageId);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        else{
 
-        if ($result->num_rows > 0) {
-            $packages = $result->fetch_assoc();
-        } else {
-            echo "Package not found.";
-            exit;
+           $username = $_SESSION['username'];
+            $getuserid = "SELECT EmployeeID FROM employees WHERE email = '$username'";
+            $result = $conn->query($getuserid);
+            $row = $result->fetch_assoc();
+            $UserID = $row['EmployeeID'];
+
+
+            $getstatus = "SELECT PaymentStatus FROM employeepolicy WHERE PolicyID = '$packageId' AND EmployeeID = '$UserID'";
+            $result = $conn->query($getstatus);
+            $row = $result->fetch_assoc();
+            $PaymentStatus = $row['PaymentStatus'];
+
+            // ค้นหาข้อมูลแพ็คเกจจากฐานข้อมูล
+            $sql = "SELECT * FROM policy WHERE PolicyID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $packageId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $package = $result->fetch_assoc();
+            } else {
+                echo "Package not found.";
+                exit;
+            }
+            $sql = "SELECT * FROM employeepolicy WHERE PolicyID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $packageId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $packages = $result->fetch_assoc();
+            } else {
+                echo "Package not found.";
+                exit;
+            }
+
+
         }
     } else {
         echo "Invalid package ID.";
         exit;
+    }
+
+    if ($PaymentStatus === 'Paid' && $UserRole == 'Customer') {
+        $getseleID = "SELECT SalesID FROM salescustomer WHERE CustomerID = '$UserID'";
+        $result = $conn->query($getseleID);
+        $row = $result->fetch_assoc();
+        $SalesID = $row['SalesID'];
+
+        $getempID = "SELECT EmployeeID FROM sales WHERE SalesID = '$SalesID'";
+        $result = $conn->query($getempID);
+        $row = $result->fetch_assoc();
+        $EmployeeID = $row['EmployeeID'];
+
+        $getsalecontact = "SELECT email,phonenumber FROM employees WHERE EmployeeID = '$EmployeeID'";
+        $result = $conn->query($getsalecontact);
+        $row = $result->fetch_assoc();
+        $saleemail = $row['email'];
+        $salephone = $row['phonenumber'];
     }
 
     ?>
@@ -110,14 +199,22 @@
     <a href="userprofile.php" class="back-button">Back to Packages</a>
 
     <!-- Main Content Section -->
-    <div class="package-details">
+    <div class="package-details fade-up">
         <img src="uploads/<?php echo htmlspecialchars($package['ImageName']); ?>" alt="Package Image">
         <div class="package-content">
             <h1><?php echo htmlspecialchars($package['PolicyName']); ?></h1>
 
-            <p class="payment-status <?php echo strtolower($packages['PaymentStatus']); ?>">
-                <?php echo $packages['PaymentStatus'] === 'Paid' ? 'Payment Completed' : 'Pending Payment'; ?>
-            </p>
+            <?php if ($PaymentStatus === 'Paid') : ?>
+                <p class="payment-status-paid">
+                    Payment Completed
+                </p>
+            <?php endif; ?>
+            <?php if ($PaymentStatus === 'Pending') : ?>
+                <p class="payment-status-pending">
+                    Pending Payment
+                </p>
+            <?php endif; ?>
+
 
             <p><strong>Type:</strong> <?php echo htmlspecialchars($package['PolicyType']); ?></p>
             <p><strong>Coverage:</strong> <?php echo htmlspecialchars($package['CoverageAmount']); ?> THB</p>
@@ -125,12 +222,26 @@
             <p><strong>Term Length:</strong> <?php echo htmlspecialchars($package['TermLength']); ?> years</p>
             <p><?php echo htmlspecialchars($package['Description']); ?></p>
 
-           
+            <?php if ($PaymentStatus === 'Pending') : ?>
+                <div class="buttoncontainer">
+                    <form action="Cancle-enrolled.php?id=<?php echo $package['PolicyID']; ?>" method="POST">
+                        <button type="submit" class="cancle-button">Remove Package</button>
+                    </form>
 
-            <form action="CS-payment.php?id=<?php echo $package['PolicyID']; ?>" method="POST">
-                <!-- <input type="hidden" name="PolicyID" value="<?php echo $package['PolicyID']; ?>"> -->
-                <button type="submit" class="confirm-button">Confirm Payment</button>
-            </form>
+                    <form action="CS-payment.php?id=<?php echo $package['PolicyID']; ?>" method="POST">
+                        <!-- <input type="hidden" name="PolicyID" value="<?php echo $package['PolicyID']; ?>"> -->
+                        <button type="submit" class="confirm-button">Confirm Payment</button>
+                    </form>
+                </div>
+            <?php endif; ?>
+            <?php if ($PaymentStatus === 'Paid' && $UserRole ==='Customer') : ?>
+                <div class="salecontactcontainer">
+                    <h3>Sale Contact</h3>
+                    <p><span style="color:#0056b3; font-weight:bold;">Email:</span> <?php echo $saleemail; ?></p>
+                    <p><span style="color:#0056b3; font-weight:bold;">Phone:</span> <?php echo $salephone; ?></p>
+                    <p style="font-weight: bold;">*** Sale will contact you in 24hr. If not please contact us. ***</p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -193,6 +304,10 @@
             </div>
         </div>
     </div>
+
+        <script src="js/smoothscroll.js"></script>
+        <script src="js/scrollfade.js"></script>
 </body>
+
 
 </html>

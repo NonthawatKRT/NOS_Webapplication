@@ -32,79 +32,83 @@ file use:
     $error = '';
 
     if (isset($_POST['submit'])) {
-        $Email = $_POST['username'];
+        $Email = trim($_POST['username']);
         $Password = $_POST['password'];
+        $error = ""; // Initialize error message
 
-        // Check for admin login
-        if ($Email === 'admin' && $Password === 'adminoat') {
-            $_SESSION['username'] = $Email;
-            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'admin-home.php';
-            header("Location: $redirect");
-            exit();
-        } else {
-            // Fetch the user data from the database
-            $stmt = $conn->prepare("SELECT PasswordHash, status ,userID FROM logincredentials WHERE email = ?");
-            $stmt->bind_param("s", $Email);
-            $stmt->execute();
-            $result = $stmt->get_result();
+        // Hardcoded admin login (not recommended)
+        // if ($Email === 'admin' && $Password === 'adminoat') {
+        //     $_SESSION['username'] = $Email;
+        //     $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'admin_dashboard.php';
+        //     header("Location: $redirect");
+        //     exit();
+        // }
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $storedHash = $row['PasswordHash'];
-                $status = $row['status']; // Get the user's verification status
-                $userID = $row['userID'];
-
-                $stmt2 = $conn->prepare("SELECT UserRole FROM users WHERE userID = ?");
-                $stmt2->bind_param("s", $userID);
-                $stmt2->execute();
-                $result2 = $stmt2->get_result();
-                $row2 = $result2->fetch_assoc();
-                $UserRole = $row2['UserRole'];
-
-                if ($UserRole === 'Employee') {
-                    $error = "You are a sales. Please login from the sales login page.";
-                }
-                if ($UserRole === 'Customer') {
-                    // Verify the entered password against the stored hash
-                    if (password_verify($Password, $storedHash)) {
-                        // Check if the user's email is verified
-                        if ($status === 'Active') {
-                            $_SESSION['username'] = $Email;
-                            $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
-                            header("Location: $redirect");
-                            exit();
-                        } else {
-                            $error = "Your email is not verified. Please check your inbox for the verification email.";
-                        }
-                    } else {
-                        $error = "Wrong username/password combination";
-                    }
-                } else {
-                    //--------------------------------- Wait For Check If user is Employee ---------------------------------
-
-                    // $stmt3 = $conn->prepare("SELECT PasswordHash, status ,userID FROM employees WHERE email = ?");
-                    // $stmt3->bind_param("s", $Email);
-                    // $stmt3->execute();
-                    // $result3 = $stmt3->get_result();
-        
-                    // if ($result3->num_rows > 0) {
-
-                    // --------------------------------------------------------------------------------------------------------
-                    
-                    $error = "Wrong username/password combination";
-                }
-            } else {
-                $error = "Wrong username/password combination";
-            }
-            $stmt->close();
-        }
+        // Hardcoded cpe888 login (not recommended)
         if ($Email === 'cpe888' && $Password === '123456789') {
             $_SESSION['username'] = $Email;
             $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'code888.php';
             header("Location: $redirect");
             exit();
         }
+
+        // Fetch user data from the database
+        $stmt = $conn->prepare("SELECT PasswordHash, status, userID FROM logincredentials WHERE email = ?");
+        $stmt->bind_param("s", $Email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $storedHash = $row['PasswordHash'];
+            $status = $row['status'];
+            $userID = $row['userID'];
+
+            // Fetch UserRole from the users table
+            $stmt2 = $conn->prepare("SELECT UserRole FROM users WHERE userID = ?");
+            $stmt2->bind_param("s", $userID);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
+            $row2 = $result2->fetch_assoc();
+            $UserRole = $row2['UserRole'] ?? null; // Ensure a default value if UserRole is missing
+
+            if ($UserRole === 'Employee') {
+                if (password_verify($Password, $storedHash)) {
+                    // Check if user is verified
+                    if ($status === 'Active') {
+                        $error = "You are a sales. Please login from the sales login page.";
+                    } else {
+                        $error = "Your email is not verified. Please check your inbox for the verification email.";
+                    }
+                } else {
+                    $error = "Incorrect username or password.";
+                }
+            } elseif ($UserRole === 'Customer') {
+                // Verify password
+                if (password_verify($Password, $storedHash)) {
+                    // Check if user is verified
+                    if ($status === 'Active') {
+                        $_SESSION['username'] = $Email;
+                        $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+                        header("Location: $redirect");
+                        exit();
+                    } else {
+                        $error = "Your email is not verified. Please check your inbox for the verification email.";
+                    }
+                } else {
+                    $error = "Incorrect username or password.";
+                }
+            } else {
+                $error = "Invalid user role. Please contact support.";
+            }
+        } else {
+            $error = "Incorrect username or password.";
+        }
+
+        $stmt->close();
     }
+
+    // Close database connection
     $conn->close();
     ?>
 
@@ -115,7 +119,7 @@ file use:
             <div class="left">
                 <a href="index.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                 <ul class="nav-links">
-                    <li><a href="index.php" id="current_page">HOME</a></li>
+                    <li><a href="index.php">HOME</a></li>
                     <li><a href="content.php">CONTENT</a></li>
                     <li><a href="CS-package.php">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
@@ -140,7 +144,7 @@ file use:
                         <a href="userprofile.php">
                             <div class="profileframe">
                                 <img src="<?php echo $profilePicturePath; ?>" alt="User Profile Picture" class="user-profile-pic">
-                            </div> 
+                            </div>
                         </a>
                     </li>
                 <?php else: ?>
@@ -169,6 +173,16 @@ file use:
             <?php if ($error == "Your email is not verified. Please check your inbox for the verification email."): ?>
                 <p class="alerttext">Your email is not verified. Please check your inbox for the verification email.</p>
             <?php endif; ?>
+            <?php if ($error == "Incorrect username or password."): ?>
+                <p class="alerttext">Incorrect username or password.</p>
+            <?php endif; ?>
+            <?php if ($error == "Invalid user role. Please contact support."): ?>
+                <p class="alerttext">Invalid user role. Please contact support.</p>
+            <?php endif; ?>
+            <?php if ($error == "You are a sales. Please login from the sales login page."): ?>
+                <p class="alerttext">You are a sales. Please login from the sales login page.</p>
+            <?php endif; ?>
+
         </div>
 
         <div class="loginsection">

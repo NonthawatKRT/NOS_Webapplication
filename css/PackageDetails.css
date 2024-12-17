@@ -37,6 +37,7 @@ body {
     border-radius: 5px; /* ทำให้มุมปุ่มโค้งมน */
     transition: background-color 0.3s ease; /* ทำให้การเปลี่ยนสีพื้นหลังนุ่มนวล */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ปุ่มดูเด่นขึ้น */
+    z-index: 10;
 }
 
 .back-button:hover {
@@ -76,9 +77,32 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ปุ่มดูเด่นขึ้น */
 }
 
+.cancle-button{
+    position: absolute;
+    margin-left: 100px;
+    padding: 10px 20px; /* เพิ่มช่องว่างในปุ่ม */
+    font-size: 1rem; /* ขนาดฟอนต์ */
+    font-weight: bold; /* ทำให้ข้อความในปุ่มหนา */
+    color: #fff; /* สีตัวอักษรในปุ่มเป็นสีขาว */
+    background-color: #0056b3; /* สีพื้นหลังของปุ่ม */
+    text-decoration: none; /* ลบขีดเส้นใต้จากลิงก์ */
+    border-radius: 5px; /* ทำให้มุมปุ่มโค้งมน */
+    transition: background-color 0.3s ease; /* ทำให้การเปลี่ยนสีพื้นหลังนุ่มนวล */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ปุ่มดูเด่นขึ้น */
+}
+.cancle-button:hover{
+    background-color: #003d7a; /* เปลี่ยนสีเมื่อผู้ใช้โฮเวอร์ที่ปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ที่ปุ่ม */
+}
+
 .confirm-button:hover {
     background-color: #003d7a; /* เปลี่ยนสีเมื่อผู้ใช้โฮเวอร์ที่ปุ่ม */
     cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ที่ปุ่ม */
+}
+
+.buttoncontainer{
+    display: flex;
+    justify-content: center;
 }
 
 /* การตั้งค่ารูปภาพ */
@@ -121,12 +145,34 @@ body {
     display: inline-block;
 }
 
-.payment-status.paid {
+.payment-status-paid {
     background-color: #d4edda;
     color: #155724;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
-.payment-status.pending {
+.payment-status-pending {
     background-color: #f8d7da;
     color: #721c24;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.salecontactcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+.salecontactcontainer h3{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #0056b3;
+    font-weight: bold;
+}
+.salecontactcontainer p{
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
 }

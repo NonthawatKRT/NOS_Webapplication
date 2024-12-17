@@ -98,7 +98,7 @@
     <a href="CS-package.php" class="back-button">Back to Packages</a>
 
     <!-- Main Content Section -->
-    <div class="package-details">
+    <div class="package-details fade-up">
         <img src="uploads/<?php echo htmlspecialchars($package['ImageName']); ?>" alt="Package Image">
         <div class="package-content">
             <h1><?php echo htmlspecialchars($package['PolicyName']); ?></h1>
@@ -179,6 +179,10 @@
             </div>
         </div>
     </div>
+
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/scrollFade.js"></script>
+
 </body>
 
 </html>

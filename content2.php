@@ -118,7 +118,7 @@
     </head>
 
     <body>
-        <div class="container">
+        <div class="container fade-up">
             <!-- รูปภาพ -->
             <div class="image-container">
                 <img src="images/patient.png" alt="pateint Image">
@@ -198,6 +198,10 @@
             </div>
         </div>
     </div>
+
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/scrollFade.js"></script>
+
 </body>
 
 </html>

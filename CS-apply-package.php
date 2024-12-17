@@ -18,70 +18,120 @@ if (!$Email) {
     exit;
 }
 
-// Prepare SQL statement to fetch CustomerID
-$stmt = $conn->prepare("SELECT CustomerID FROM customer WHERE email = ?");
+//getuserID from logincredentials
+$stmt = $conn->prepare("SELECT UserID FROM logincredentials WHERE Email = ?");
 $stmt->bind_param("s", $Email);
 $stmt->execute();
 $result = $stmt->get_result();
+$userID = $result->fetch_assoc()['UserID'];
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $userID = $row['CustomerID']; // Assign the retrieved CustomerID
-    $_SESSION['CustomerID'] = $userID; // Update session
-} else {
-    echo "<script>alert('Please log in.'); window.location.href = 'login.php';</script>";
-    exit;
-}
+
 
 // ---------------- ตรวจสอบบทบาทผู้ใช้ ---------------- //
 $stmt = $conn->prepare("SELECT UserRole FROM users WHERE UserID = ?");
 if (!$stmt) {
     echo "<script>alert('Database error while checking user role.');</script>";
     exit;
-}   
+}
 $stmt->bind_param("s", $userID);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
-    if ($user['UserRole'] !== 'Customer') {
-        echo "<script>alert('You are not authorized to apply for this package.'); window.history.back();</script>";
-        exit;
+    if ($user['UserRole'] == 'Customer') {
+        // Prepare SQL statement to fetch CustomerID
+        $stmt = $conn->prepare("SELECT CustomerID FROM customer WHERE email = ?");
+        $stmt->bind_param("s", $Email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $userID = $row['CustomerID']; // Assign the retrieved CustomerID
+            $_SESSION['CustomerID'] = $userID; // Update session
+        } else {
+            echo "<script>alert('Please log in.'); window.location.href = 'login.php';</script>";
+            exit;
+        }
+
+        // ---------------- ตรวจสอบว่าผู้ใช้งานสมัครแพ็คเกจนี้ไปแล้วหรือไม่ ----------------//
+        $stmt = $conn->prepare("SELECT * FROM customerpolicy WHERE CustomerID = ? AND PolicyID = ?");
+        if (!$stmt) {
+            echo "<script>alert('Database error while checking existing applications.');</script>";
+            exit;
+        }
+        $stmt->bind_param("si", $userID, $policyID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<script>alert('You have already applied for this package.'); window.history.back();</script>";
+            exit;
+        }
+
+        // ---------------- เพิ่มข้อมูลการสมัคร ----------------//
+        $sql = "INSERT INTO customerpolicy (CustomerID, PolicyID, PaymentStatus, EnrollmentDate) 
+    VALUES (?, ?, 'Pending', NOW())";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            echo "<script>alert('Database error while submitting application.');</script>";
+            exit;
+        }
+        $stmt->bind_param("si", $userID, $policyID);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Your application has been submitted. Please proceed to payment.'); window.history.back();</script>";
+        } else {
+            echo "<script>alert('Error: Unable to submit your application.'); window.history.back();</script>";
+        }
+    } else {
+        $stmt = $conn->prepare("SELECT EmployeeID FROM employees WHERE email = ?");
+        $stmt->bind_param("s", $Email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $userID = $row['EmployeeID']; // Assign the retrieved CustomerID
+            $_SESSION['EmployeeID'] = $userID; // Update session
+        } else {
+            echo "<script>alert('Please log in.'); window.location.href = 'login.php';</script>";
+            exit;
+        }
+
+        // ---------------- ตรวจสอบว่าผู้ใช้งานสมัครแพ็คเกจนี้ไปแล้วหรือไม่ ----------------//
+        $stmt = $conn->prepare("SELECT * FROM employeepolicy WHERE employeeID = ? AND PolicyID = ?");
+        if (!$stmt) {
+            echo "<script>alert('Database error while checking existing applications.');</script>";
+            exit;
+        }
+        $stmt->bind_param("si", $userID, $policyID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<script>alert('You have already applied for this package.'); window.history.back();</script>";
+            exit;
+        }
+
+        // ---------------- เพิ่มข้อมูลการสมัคร ----------------//
+        $sql = "INSERT INTO employeepolicy (employeeID, PolicyID, PaymentStatus, EnrollmentDate) 
+    VALUES (?, ?, 'Pending', NOW())";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            echo "<script>alert('Database error while submitting application.');</script>";
+            exit;
+        }
+        $stmt->bind_param("si", $userID, $policyID);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Your application has been submitted. Please proceed to payment.'); window.history.back();</script>";
+        } else {
+            echo "<script>alert('Error: Unable to submit your application.'); window.history.back();</script>";
+        }
     }
 } else {
-    echo "<script>alert('User not found.'); window.history.back();</script>";
+    echo "<script>alert('User not found.'); window.location.href = 'login.php';</script>";
     exit;
 }
-
-// ---------------- ตรวจสอบว่าผู้ใช้งานสมัครแพ็คเกจนี้ไปแล้วหรือไม่ ----------------//
-$stmt = $conn->prepare("SELECT * FROM customerpolicy WHERE CustomerID = ? AND PolicyID = ?");
-if (!$stmt) {
-    echo "<script>alert('Database error while checking existing applications.');</script>";
-    exit;
-}
-$stmt->bind_param("si", $userID, $policyID);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    echo "<script>alert('You have already applied for this package.'); window.history.back();</script>";
-    exit;
-}
-
-// ---------------- เพิ่มข้อมูลการสมัคร ----------------//
-$sql = "INSERT INTO customerpolicy (CustomerID, PolicyID, PaymentStatus, EnrollmentDate) 
-    VALUES (?, ?, 'Pending', NOW())";
-$stmt = $conn->prepare($sql);
-if (!$stmt) {
-    echo "<script>alert('Database error while submitting application.');</script>";
-    exit;
-}
-$stmt->bind_param("si", $userID, $policyID);
-
-if ($stmt->execute()) {
-    echo "<script>alert('Your application has been submitted. Please proceed to payment.'); window.history.back();</script>";
-} else {
-    echo "<script>alert('Error: Unable to submit your application.'); window.history.back();</script>";
-}
-?>

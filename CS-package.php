@@ -125,7 +125,7 @@
             </div>
 
             <!-- Main Content Section -->
-            <div class="main-content">
+            <div class="main-content fade-up">
                 <div class="titlePackage">
                     <h1>NOS Insurance Packages</h1>
                 </div>
@@ -251,6 +251,10 @@
                     </div>
                 </div>
             </div>
+
+            <script src="js/smoothscroll.js"></script>
+            <script src="js/scrollFade.js"></script>
+
 </body>
 
 </html>

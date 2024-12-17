@@ -1,0 +1,277 @@
+/* Centering the content using flexbox */
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin-top: 120px;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.welcometext{
+    width: 100%;
+    margin-left: 55px;
+    justify-content: start;
+}
+
+.welcometext p{
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.tittlesection{
+    padding: 0px 70px;
+}
+
+.tittlesection p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+
+.maincontentsection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 0px 280px;
+}
+
+.sectionlebel{
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.sectionlebel h2{
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.sectionlebel p{
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.buttoncontainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+
+.accountsection{
+    width: 100%;
+}
+
+.acountform{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 0px 50px;
+}
+
+.acountform div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.acountform div label{
+    justify-self: start;
+    width: 40%;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.acountform div input{
+    justify-self: end;
+    width: 60%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.acountform div select{
+    justify-self: end;
+    width: 62%;
+    padding: 6px 10px;
+    font-size: 17px;
+    border: 1px solid #606060;
+}
+
+.buttoncontainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+.lastconfirmbt{
+    background-color: #f6e000;
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
+}
+
+.exitbt{
+    background-color: #f6e000;
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
+}
+
+.canclebt{
+    background-color: rgb(214, 214, 214);
+    color: black;
+    border: none;
+    margin: 16px 20px 16px 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 0px;
+    text-align: center;
+    width: 140px;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 0px;
+}
+
+
+/* -------------------------------------------------- Smooth fade-in animation -------------------------------------------------- */
+
+.fade-up {
+    opacity: 0; /* Start with invisible content */
+    transform: translateY(50px); /* Start slightly below the normal position */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+.fade-up.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------ Error Message -----------------------------------------------------------------*/
+
+
+/* Error message container styling */
+#error-messages {
+    background-color: #fff3cd; /* Light yellow for warnings */
+    color: #856404; /* Dark text for readability */
+    border: 1px solid #ffeeba; /* Border matching the background */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    padding: 10px 20px; /* Spacing around the text */
+    margin-bottom: 15px; /* Space below the container */
+    font-size: 14px; /* Standard font size */
+    line-height: 1.5; /* Better readability */
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.3s ease-in-out; /* Smooth animation */
+}
+
+/* Smooth fade-in animation for the error messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Error message list */
+#error-messages ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove bullet points */
+}
+
+/* Individual error message items */
+#error-messages ul li {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+
+
+/* Full-screen overlay for the loading indicator */
+.registersection .loading-overlay {
+    position: fixed;
+    top: 0; /* Ensure the overlay covers the entire viewport */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other elements */
+    animation: fade-down 0.5s ease-in-out;
+}
+
+/* Loading box */
+.loading-overlay .loading-box {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    font-weight: bold;
+    color: black; /* Use black for the text for better readability */
+}
+
+/* Fade-down animation */
+@keyframes fade-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

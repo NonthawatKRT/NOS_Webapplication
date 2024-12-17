@@ -1,3 +1,14 @@
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+                                                                                     Under Development
+
+
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -19,23 +30,89 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    if (!isset($_SESSION['username'])) {
-        echo "<script>
-            alert('Cannot load user data. Please try again later.');
-            window.location.href = 'login.php';
-        </script>";
-        exit();
-    }
+    // ---------------- รับ ID จาก URL ในการเรียก package มาแสดง ----------------//
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $email = $_GET['id'];
 
-    // Check if user is logged in and session variables exist
-    if (!isset($_SESSION['username'])) {
-        echo json_encode(['success' => false, 'error' => 'User not logged in']);
-        echo "<script>
-            alert('Cannot load user data. Please try again later.');
-            window.location.href = 'login.php';
-        </script>";
-        exit();
+        $stmt = $conn->prepare("SELECT UserID FROM logincredentials WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $userID = $result->fetch_assoc()['UserID'];
+
+        //getuser role 
+        $stmt = $conn->prepare("SELECT UserRole FROM users WHERE userID = ?");
+        $stmt->bind_param("s", $userID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        $userrole = $user['UserRole'];
+
+        if ($userrole == 'Customer') {
+            // Get the user ID from the session
+            $username = $_SESSION['username'];
+            $getuserid = "SELECT CustomerID FROM customer WHERE email = '$username'";
+            $result = $conn->query($getuserid);
+            $row = $result->fetch_assoc();
+            $userID = $row['CustomerID'];
+
+            $EMPID = $_SESSION['userID'];
+            // getsaleID
+            $stmt = $conn->prepare("SELECT SalesID FROM sales WHERE CustomerID = ?");
+            $stmt->bind_param("s", $EMPID);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $SaleID = $result->fetch_assoc()['SalesID'];
+
+
+            //getsalecustomerID
+            $stmt = $conn->prepare("SELECT SalesCustomerID FROM salescustomer WHERE CustomerID = ? AND SalesID = ?");
+            $stmt->bind_param("ss", $userID, $SaleID);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $SaleCustomerID = $result->fetch_assoc()['SalesCustomerID'];
+
+            //getcustomer policyID and CustomerID
+            $stmt = $conn->prepare("SELECT PolicyID FROM salescustomer WHERE CustomerID = ?");
+            $stmt->bind_param("s", $userID);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $policyID = $result->fetch_assoc()['PolicyID'];
+
+            // ดึงข้อมูลแพ็คเกจของผู้ใช้งาน
+            $sql = "SELECT p.PolicyName, p.imageName, cp.PaymentStatus, cp.EnrollmentDate, cp.PolicyID
+            FROM customerpolicy cp
+            JOIN policy p ON cp.PolicyID = p.PolicyID
+            WHERE cp.CustomerID = ? AND cp.PolicyID = ?";
+
+            $stmt = $conn->prepare($sql);
+            if (!$stmt) {
+                die("SQL Error: " . $conn->error);
+            }
+
+            $stmt->bind_param("s", $userID);  // Use "s" for string binding
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $packages = $result->num_rows > 0 ? $result->fetch_all(MYSQLI_ASSOC) : [];
+        }
     }
+    // if (!isset($_SESSION['username'])) {
+    //     echo "<script>
+    //         alert('Cannot load user data. Please try again later.');
+    //         window.location.href = 'login.php';
+    //     </script>";
+    //     exit();
+    // }
+
+    // // Check if user is logged in and session variables exist
+    // if (!isset($_SESSION['username'])) {
+    //     echo json_encode(['success' => false, 'error' => 'User not logged in']);
+    //     echo "<script>
+    //         alert('Cannot load user data. Please try again later.');
+    //         window.location.href = 'login.php';
+    //     </script>";
+    //     exit();
+    // }
 
     // Check if there's a success or error message to display
     if (isset($_SESSION['message'])) {
@@ -46,32 +123,32 @@
     }
 
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['Image'])) {
-        $uploadDir = 'userprofiles/'; // Directory to store profile pictures
+    // if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['Image'])) {
+    //     $uploadDir = 'userprofiles/'; // Directory to store profile pictures
 
-        // Ensure the directory exists
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true); // Create the directory if it doesn't exist
-        }
+    //     // Ensure the directory exists
+    //     if (!is_dir($uploadDir)) {
+    //         mkdir($uploadDir, 0777, true); // Create the directory if it doesn't exist
+    //     }
 
-        $imageTmpPath = $_FILES['Image']['tmp_name'];
-        $imageName = $_SESSION['username'] . ".png"; // Use username as the image name
-        $imagePath = $uploadDir . $imageName;
+    //     $imageTmpPath = $_FILES['Image']['tmp_name'];
+    //     $imageName = $_SESSION['username'] . ".png"; // Use username as the image name
+    //     $imagePath = $uploadDir . $imageName;
 
-        // Delete the existing file if it exists
-        if (file_exists($imagePath)) {
-            unlink($imagePath); // Remove the old file
-        }
+    //     // Delete the existing file if it exists
+    //     if (file_exists($imagePath)) {
+    //         unlink($imagePath); // Remove the old file
+    //     }
 
-        // Move the uploaded file to the target directory
-        if (move_uploaded_file($imageTmpPath, $imagePath)) {
-            echo json_encode(['success' => true, 'message' => 'Profile picture updated successfully']);
-        } else {
-            echo json_encode(['success' => false, 'error' => 'Failed to upload profile picture']);
-        }
-    } else {
-        // echo json_encode(['success' => false, 'error' => 'Invalid request or no file uploaded']);
-    }
+    //     // Move the uploaded file to the target directory
+    //     if (move_uploaded_file($imageTmpPath, $imagePath)) {
+    //         echo json_encode(['success' => true, 'message' => 'Profile picture updated successfully']);
+    //     } else {
+    //         echo json_encode(['success' => false, 'error' => 'Failed to upload profile picture']);
+    //     }
+    // } else {
+    //     // echo json_encode(['success' => false, 'error' => 'Invalid request or no file uploaded']);
+    // }
 
     //getuserID from users
     $stmt = $conn->prepare("SELECT UserID FROM logincredentials WHERE email = ?");
@@ -208,13 +285,6 @@
                 echo "Query execution failed: " . $stmt->error;
             }
         }
-
-        // Step 4: Display all customer details
-        // echo "<h3>Customer Details:</h3>";
-        // echo "<pre>";
-        // print_r($customerDetails);
-        // echo "</pre>";
-
 
 
         // Close the statement
@@ -635,7 +705,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- <a href="#" id="userprofileinfo-link" data-email="<?php echo htmlspecialchars($customer['Email']); ?>"> -->
+                                    <a href="#" id="userprofileinfo-link" data-email="<?php echo htmlspecialchars($customer['Email']); ?>">
                                         <!-- Customer Details -->
                                         <div class="customercontent">
 
@@ -726,6 +796,39 @@
         </div>
 
         <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const link = document.getElementById('userprofileinfo-link');
+
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    const email = link.getAttribute('data-email');
+
+                    // POST request to loaduserdata.php
+                    fetch('loaduserdata.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: `email=${encodeURIComponent(email)}` // Send the email as POST data
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log("User data loaded successfully:", data);
+                                // Redirect to userprofile-info.php or display data dynamically
+                                window.location.href = `userprofile-info.php?id=${encodeURIComponent(email)}`;
+                            } else {
+                                alert("Error: " + data.error);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error fetching user data:", error);
+                            alert("An unexpected error occurred. Please try again.");
+                        });
+                });
+            });
+
             document.addEventListener('DOMContentLoaded', () => {
                 const profileTool = document.querySelector('.profiletool');
                 const profileForm = document.querySelector('.selfinfo');
@@ -972,7 +1075,7 @@
                 const healthinfoForm = document.querySelector('.healthinfo');
 
                 // Fetch data from loaddata.php
-                fetch('loaddata.php')
+                fetch('loaduserdata.php')
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
@@ -1026,103 +1129,91 @@
                 }
             }
 
-            document.addEventListener('DOMContentLoaded', () => {
-                const uploadForm = document.getElementById('uploadForm');
+            // document.addEventListener('DOMContentLoaded', () => {
+            //     const uploadForm = document.getElementById('uploadForm');
 
-                if (uploadForm) {
-                    uploadForm.addEventListener('submit', async (e) => {
-                        e.preventDefault(); // Prevent the default form submission
+            //     if (uploadForm) {
+            //         uploadForm.addEventListener('submit', async (e) => {
+            //             e.preventDefault(); // Prevent the default form submission
 
-                        const formData = new FormData(uploadForm);
+            //             const formData = new FormData(uploadForm);
 
-                        try {
-                            const response = await fetch('upload_profile_picture.php', {
-                                method: 'POST',
-                                body: formData,
-                            });
+            //             try {
+            //                 const response = await fetch('upload_profile_picture.php', {
+            //                     method: 'POST',
+            //                     body: formData,
+            //                 });
 
-                            const result = await response.json();
+            //                 const result = await response.json();
 
-                            if (result.success) {
-                                alert(result.message); // Show success message
-                                location.reload(); // Reload the page to show the updated profile picture
-                            } else {
-                                alert('Error: ' + result.error); // Show error message
-                            }
-                        } catch (error) {
-                            console.error('Error uploading profile picture:', error);
-                            alert('An unexpected error occurred. Please try again.');
-                        }
-                    });
-                }
-            });
+            //                 if (result.success) {
+            //                     alert(result.message); // Show success message
+            //                     location.reload(); // Reload the page to show the updated profile picture
+            //                 } else {
+            //                     alert('Error: ' + result.error); // Show error message
+            //                 }
+            //             } catch (error) {
+            //                 console.error('Error uploading profile picture:', error);
+            //                 alert('An unexpected error occurred. Please try again.');
+            //             }
+            //         });
+            //     }
+            // });
 
-            document.addEventListener('DOMContentLoaded', () => {
+            // document.addEventListener('DOMContentLoaded', () => {
+            //     // const changeProfileBtn = document.getElementById('changeProfileBtn');
+            //     // const uploadModal = document.getElementById('uploadModal');
+            //     // const closeModal = document.getElementById('closeModal');
 
-                const link = document.getElementById('userprofileinfo-link');
+            //     // // Show the modal when the "Change Profile" button is clicked
+            //     // changeProfileBtn.addEventListener('click', () => {
+            //     //     console.log('Opening upload modal');
+            //     //     uploadModal.style.display = 'block'; // Show the modal
+            //     // });
 
-                link.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the default link behavior
+            //     // // Close the modal when the "X" button is clicked
+            //     // closeModal.addEventListener('click', () => {
+            //     //     uploadModal.style.display = 'none'; // Hide the modal
+            //     // });
 
-                    const email = link.getAttribute('data-email');
+            //     // // Close the modal when clicking outside of the modal content
+            //     // window.addEventListener('click', (event) => {
+            //     //     if (event.target === uploadModal) {
+            //     //         uploadModal.style.display = 'none'; // Hide the modal
+            //     //     }
+            //     // });
 
-                    // POST request to loaduserdata.php
-                    fetch('loaduserdata.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `email=${encodeURIComponent(email)}` // Send the email as POST data
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                console.log("User data loaded successfully:", data);
-                                // Redirect to userprofile-info.php
-                                window.location.href = `userprofile-info.php?id=${encodeURIComponent(email)}`;
-                            } else {
-                                alert("Error: " + data.error);
-                            }
-                        })
-                        .catch(error => {
-                            console.error("Error fetching user data:", error);
-                            alert("An unexpected error occurred. Please try again.");
-                        });
-                });
+            //     // Handle the form submission via AJAX
+            //     const uploadForm = document.getElementById('uploadForm');
 
+            //     if (uploadForm) {
+            //         uploadForm.addEventListener('submit', async (e) => {
+            //             e.preventDefault(); // Prevent default form submission
 
+            //             const formData = new FormData(uploadForm);
 
-                // Handle the form submission via AJAX
-                const uploadForm = document.getElementById('uploadForm');
+            //             try {
+            //                 const response = await fetch('upload_profile_picture.php', {
+            //                     method: 'POST',
+            //                     body: formData,
+            //                 });
 
-                if (uploadForm) {
-                    uploadForm.addEventListener('submit', async (e) => {
-                        e.preventDefault(); // Prevent default form submission
+            //                 const result = await response.json();
 
-                        const formData = new FormData(uploadForm);
-
-                        try {
-                            const response = await fetch('upload_profile_picture.php', {
-                                method: 'POST',
-                                body: formData,
-                            });
-
-                            const result = await response.json();
-
-                            if (result.success) {
-                                alert(result.message); // Show success message
-                                document.querySelector('.profilepicture').src = `userprofiles/${username}.png?timestamp=${new Date().getTime()}`;
-                                uploadModal.style.display = 'none'; // Close the modal after successful upload
-                            } else {
-                                alert('Error: ' + result.error); // Show error message
-                            }
-                        } catch (error) {
-                            console.error('Error uploading profile picture:', error);
-                            alert('An unexpected error occurred. Please try again.');
-                        }
-                    });
-                }
-            });
+            //                 if (result.success) {
+            //                     alert(result.message); // Show success message
+            //                     document.querySelector('.profilepicture').src = `userprofiles/${username}.png?timestamp=${new Date().getTime()}`;
+            //                     uploadModal.style.display = 'none'; // Close the modal after successful upload
+            //                 } else {
+            //                     alert('Error: ' + result.error); // Show error message
+            //                 }
+            //             } catch (error) {
+            //                 console.error('Error uploading profile picture:', error);
+            //                 alert('An unexpected error occurred. Please try again.');
+            //             }
+            //         });
+            //     }
+            // });
         </script>
 
         <script src="js/smoothscroll.js"></script>

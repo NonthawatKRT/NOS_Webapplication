@@ -46,6 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['Image'])) {
 
     // Move the uploaded file to the target directory
     if (move_uploaded_file($imageTmpPath, $imagePath)) {
+
+        // Clear the browser cache for the updated profile picture
+        header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        header("Pragma: no-cache"); // HTTP 1.0.
+        header("Expires: 0"); // Proxies.
+
         echo json_encode(['success' => true, 'message' => 'Profile picture updated successfully']);
     } else {
         echo json_encode(['success' => false, 'error' => 'Failed to upload profile picture']);

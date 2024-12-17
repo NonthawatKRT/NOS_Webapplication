@@ -105,7 +105,7 @@
     </style>
 </head>
 <body>
-    <div class="card">
+    <div class="card fade-up">
     <a href = "content1.php">
         <img src="images/car.jpg" alt="Car">
         <div class="card-content">
@@ -115,7 +115,7 @@
     </a>
     </div>
 
-    <div class="card">
+    <div class="card fade-up">
     <a href = "content2.php">
         <img src="images/patient.png" alt="Patient">
         <div class="card-content">
@@ -125,7 +125,7 @@
         </a>
     </div>
 
-    <div class="card">
+    <div class="card fade-up">
     <a href = "content3.php">
         <img src="images/food.jpg" alt="Food">
         <div class="card-content">
@@ -195,5 +195,9 @@
         </div>
         </div>
     </div>
+
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/scrollFade.js"></script>
+
 </body>
 </html>

@@ -118,10 +118,13 @@ body {
     border-style: none;
     cursor: pointer;
     border-radius: 5px; /* Rounded button */
+    transition: transform 0.2s , box-shadow 0.2s;
 }
+
 
 .bigcontentbt:hover {
     background-color: #003080; /* Slightly darker on hover */
+    box-shadow: 0 6px 10px rgb(44, 44, 44 , 0.2);    
 }
 
 
@@ -286,7 +289,14 @@ body {
     font-size: 18px;
     text-decoration: none;
     margin: 0px 0px;
+    transition: transform 0.2s , box-shadow 0.2s;
 }
+
+.packagebt:hover{
+    transform: scale(1.03);
+    box-shadow: 0 5px 10px rgb(44, 44, 44 , 0.2);
+}
+
 .packagemoredetailbt{
     background-color: #f6e000;
     color: black;
@@ -297,8 +307,14 @@ body {
     font-size: 25px;
     text-decoration: none;
     margin: 0px 0px;
+    transition: padding 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+
 }
 
+.packagemoredetailbt:hover{
+    padding: 10px 60px;
+    box-shadow: 0 5px 10px rgb(44, 44, 44 , 0.2);
+}
 /* ------------------------------------------------------- Contents Section ------------------------------------------------------- */
 
 .contents{
@@ -367,6 +383,13 @@ body {
     font-size: 25px;
     text-decoration: none;
     margin: 0px 0px;
+    transition: transform 0.2s , box-shadow 0.2s;
+
+}
+
+.contentsbt:hover{
+    padding: 10px 60px;
+    box-shadow: 0 5px 10px rgb(44, 44, 44 , 0.2);
 }
 
 /* ------------------------------------------------------- Question Section ------------------------------------------------------- */

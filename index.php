@@ -221,8 +221,7 @@ file use:
                         </div>
                     </div>
                 </div>
-                <a href="CS-package.php " class="packagemoredetailbt">SEE MORE</a>
-                <!-- <a href="" class="packagemoredetailbt fade-up">SEE MORE</a> -->
+                <a href="" class="packagemoredetailbt fade-up">SEE MORE</a>
             </div>
         </section>
 
@@ -251,7 +250,7 @@ file use:
                 </div>
             </div>
             <div class="contentsbtcontainer">
-                <a href="" class="contentsbt fade-up">SEE MORE</a>
+                <a href="content.php" class="contentsbt fade-up">SEE MORE</a>
             </div>
         </section>
 

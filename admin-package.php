@@ -100,8 +100,8 @@
             <div class="left">
                 <a href="admin-home.php" class="logo"><img class="NOSlogo" src="images/NOSlogo.png" alt=""></a>
                 <ul class="nav-links">
-                    <li><a href="admin-home.php">HOME</a></li>
-                    <li><a href="">CONTENT</a></li>
+                    <li><a href="admin_dashboard.php">HOME</a></li>
+                    <li><a href="userdashboardforadmin.php">DASHBOARD</a></li>
                     <li><a href="admin-package.php" id="current_page">PACKAGES</a></li>
                     <P style=" margin-top: 0px; margin-bottom: 0px; margin-right: 20px;"> | </P>
                     <li><a href="#">ABOUT US</a></li>
@@ -144,7 +144,7 @@
             </div>
 
             <!-- Main Content Section -->
-            <div class="main-content">
+            <div class="main-content fade-up">
                 <div class="titlePackage">
                     <h1>NOS Insurance Packages</h1>
                 </div>
@@ -269,6 +269,9 @@
                     </div>
                 </div>
             </div>
+
+            <script src="js/smoothscroll.js"></script>
+            <script src="js/scrollFade.js"></script>
 </body>
 
 </html>
